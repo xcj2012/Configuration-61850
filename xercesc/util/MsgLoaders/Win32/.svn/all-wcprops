@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/repos/asf/!svn/ver/1725661/xerces/c/branches/xerces-3.1/src/xercesc/util/MsgLoaders/Win32
+END
+Win32MsgLoader.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/src/xercesc/util/MsgLoaders/Win32/Win32MsgLoader.cpp
+END
+Win32MsgLoader.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/src/xercesc/util/MsgLoaders/Win32/Win32MsgLoader.hpp
+END
+Version.rc
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/repos/asf/!svn/ver/1725661/xerces/c/branches/xerces-3.1/src/xercesc/util/MsgLoaders/Win32/Version.rc
+END
+resource.h
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/src/xercesc/util/MsgLoaders/Win32/resource.h
+END

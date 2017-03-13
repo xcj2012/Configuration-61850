@@ -1,0 +1,128 @@
+#include"mainwindow.h"
+#include"ui_mainwindow.h"
+void MainWindow::Init_LogiceNode()
+{
+
+	headerList.clear();
+	headerList << tr("prefix") << tr("lnClass") << tr("inst") << tr("lnType") << tr("desc");
+
+
+    ui->tableView->setSelectionBehavior(QAbstractItemView::SelectRows);
+	ui->tableView->setSelectionMode(QAbstractItemView::SingleSelection);
+	m_ModelIED_LN->clear();
+	ClearTableDelegate(headerList.size());
+	disconnect(m_ModelIED_LN, SIGNAL(dataChanged(const QModelIndex &, const QModelIndex &)), this, SLOT(OnLNDataChanged(const QModelIndex &, const QModelIndex &)));
+	m_ModelIED_LN->setColumnCount(headerList.count());
+
+	ui->tableView->setModel(m_ModelIED_LN);
+	for (int i = 0; i < headerList.count(); i++)
+	{
+		m_ModelIED_LN->setHeaderData(i, Qt::Horizontal, headerList.at(i));
+		ui->tableView->setItemDelegateForColumn(i, ui->tableView->itemDelegateForColumn(0));
+	}
+
+	ui->tableView->setColumnWidth(0, 200);
+	ui->tableView->setColumnWidth(1, 200);
+	ui->tableView->setColumnWidth(2, 200);
+	ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Interactive);
+
+	connect(m_ModelIED_LN, SIGNAL(dataChanged(const QModelIndex &, const QModelIndex &)), this, SLOT(OnLNDataChanged(const QModelIndex &, const QModelIndex &)));
+
+}
+
+
+
+void MainWindow::OnLNDataChanged(const QModelIndex & topLeft, const QModelIndex & bottomRight)
+{
+	int istartrow, istartcolumn, iendrow, iendcolumn;
+	istartrow = topLeft.row();
+	istartcolumn = topLeft.column();
+	iendrow = bottomRight.row();
+	iendcolumn = bottomRight.column();
+	QString str2;
+	QStringList strlist;
+	QStringList nameList;
+	nameList << tr("prefix") << tr("lnClass") << tr("inst") << tr("lnType") << tr("desc");
+
+	QString str;
+	str = ui->comboBox_LD->currentText();
+	strlist = str.split(":");
+    QString strap, strld,strln,strprfix,strLnclass,strinst,strDesc;
+	strap = strlist[0];
+	strld = strlist[1];
+	int recode;
+    strprfix = m_ModelIED_LN->data(m_ModelIED_LN->index(istartrow, 0), Qt::EditRole).toString();
+    strLnclass = m_ModelIED_LN->data(m_ModelIED_LN->index(istartrow, 1), Qt::EditRole).toString();
+    strinst = m_ModelIED_LN->data(m_ModelIED_LN->index(istartrow, 2), Qt::EditRole).toString();
+    strDesc = m_ModelIED_LN->data(m_ModelIED_LN->index(istartrow, 4), Qt::EditRole).toString();
+    strln = strprfix+strLnclass+strinst;
+    recode = m_SCDPoint->UpdataLNDesc(strIEDname,strld,strln,strDesc);
+
+    if(recode==DO_OK)
+    {
+       Change_Flag = 1;
+	   Reversion_Flag = 1;
+    }else if (recode == DO_FAIL)
+	{
+		QMessageBox::about(0, tr("Alarm"), tr("Modify Value  false!"));
+	}
+	m_SCDPoint->SwitchToIED();
+	ui->comboBox_LD->activated(ui->comboBox_LD->currentText());
+}
+void MainWindow::DisplayLN(QString str)
+{
+	disconnect(m_ModelIED_LN, SIGNAL(dataChanged(const QModelIndex &, const QModelIndex &)), this, SLOT(OnLNDataChanged(const QModelIndex &, const QModelIndex &)));
+
+	QStringList strlist;
+	strlist = str.split(":");
+	QString strap, strld;
+	strap = strlist[0];
+	strld = strlist[1];
+	int recode;
+	m_ModelIED_LN->setRowCount(0);
+	recode = m_SCDPoint->GetAccessPoint(strap);
+	recode = m_SCDPoint->GetChild("Server");
+	if (m_SCDPoint->GetChildByname_value("LDevice", "inst", strld) != DO_OK)
+	{
+		connect(m_ModelIED_LN, SIGNAL(dataChanged(const QModelIndex &, const QModelIndex &)), this, SLOT(OnLNDataChanged(const QModelIndex &, const QModelIndex &)));
+		return;
+	}
+	m_ModelIED_LN->setRowCount(m_ModelIED_LN->rowCount() + 1);
+	recode = m_SCDPoint->GetChild("LN0");
+	AddOneLNToTable(m_ModelIED_LN->rowCount() - 1);
+	recode = m_SCDPoint->SwitchParent();
+	m_ModelIED_LN->setRowCount(m_ModelIED_LN->rowCount() + 1);
+	recode = m_SCDPoint->GetChild("LN");
+	AddOneLNToTable(m_ModelIED_LN->rowCount() - 1);
+
+	while (m_SCDPoint->GetNextChild("LN") == DO_OK)
+	{
+		m_ModelIED_LN->setRowCount(m_ModelIED_LN->rowCount() + 1);
+		AddOneLNToTable(m_ModelIED_LN->rowCount() - 1);
+
+	}
+	m_SCDPoint->SwitchToIED();
+	connect(m_ModelIED_LN, SIGNAL(dataChanged(const QModelIndex &, const QModelIndex &)), this, SLOT(OnLNDataChanged(const QModelIndex &, const QModelIndex &)));
+
+	return;
+}
+void MainWindow::AddOneLNToTable(int row)
+{
+	QString strvalue;
+	strvalue = m_SCDPoint->GetAttribute("prefix");
+	strvalue = m_SCDPoint->GetAttribute("lnClass");
+	strvalue = m_SCDPoint->GetAttribute("inst");
+	strvalue = m_SCDPoint->GetAttribute("lnType");
+	strvalue = m_SCDPoint->GetAttribute("desc");
+	m_ModelIED_LN->setData(m_ModelIED_LN->index(row, 0), QVariant(m_SCDPoint->GetAttribute("prefix")));
+	m_ModelIED_LN->setData(m_ModelIED_LN->index(row, 1), QVariant(m_SCDPoint->GetAttribute("lnClass")));
+	m_ModelIED_LN->setData(m_ModelIED_LN->index(row, 2), QVariant(m_SCDPoint->GetAttribute("inst")));
+	m_ModelIED_LN->setData(m_ModelIED_LN->index(row, 3), QVariant(m_SCDPoint->GetAttribute("lnType")));
+	m_ModelIED_LN->setData(m_ModelIED_LN->index(row, 4), QVariant(m_SCDPoint->GetAttribute("desc")));
+
+	m_ModelIED_LN->item(row, 0)->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+	m_ModelIED_LN->item(row, 1)->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+	m_ModelIED_LN->item(row, 2)->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+	m_ModelIED_LN->item(row, 3)->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+
+}

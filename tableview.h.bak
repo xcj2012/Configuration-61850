@@ -1,0 +1,25 @@
+#ifndef TABLEVIEW_H
+#define TABLEVIEW_H
+
+#include <QTableView>
+#include <QDropEvent>
+class TableView : public QTableView
+{
+           Q_OBJECT
+
+public:
+        explicit  TableView(QWidget *parent = 0);
+        ~TableView();
+
+protected:
+
+          void dragEnterEvent(QDragEnterEvent *event);
+          void dragMoveEvent(QDragMoveEvent *event);
+          void dropEvent(QDropEvent *event);
+signals:
+        void SenddragEnterEvent(QDragEnterEvent *event);
+        void SenddragMoveEvent(QDragMoveEvent *event);
+        void SenddropEvent(QDropEvent *event);
+};
+
+#endif

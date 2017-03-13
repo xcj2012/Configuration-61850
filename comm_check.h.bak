@@ -1,0 +1,31 @@
+#ifndef COMM_CHECK_H
+#define COMM_CHECK_H
+
+#include <QDialog>
+#include "scdtree.h"
+namespace Ui {
+class Comm_check;
+}
+
+class Comm_check : public QDialog
+{
+    Q_OBJECT
+
+public:
+    explicit Comm_check(QWidget *parent = 0);
+
+    ~Comm_check();
+    void AddOneErrToArea(QString str);
+    void Checkfile();
+	void Init();
+	void SetPoint(ScdTree *);
+	ScdTree *Point;
+private:
+	QStringList ErrList;
+
+    Ui::Comm_check *ui;
+private slots:
+    void onPushbutton_Check();
+};
+
+#endif // COMM_CHECK_H

@@ -1,0 +1,298 @@
+﻿生成启动时间为 2017/3/10 15:15:10。
+     1>项目“D:\Qt\Project\Configuration V1.2\Configuration.vcxproj”在节点 2 上(Build 个目标)。
+     1>CustomBuild:
+         Moc'ing applyoneied.h...
+         Moc'ing batchimportcid.h...
+         Moc'ing exportcid.h...
+         Moc'ing datatemplate.h...
+         Moc'ing compareied.h...
+         Moc'ing datadescchange.h...
+         Moc'ing stationpara.h...
+         Moc'ing iecconfig.h...
+         Moc'ing timeservice.h...
+         Moc'ing reload.h...
+         Moc'ing mmsextra.h...
+         Moc'ing importxls.h...
+         Moc'ing importxls_rs.h...
+         Moc'ing mergescd.h...
+         Moc'ing mergecompare.h...
+         Moc'ing wait_dlg.h...
+         Moc'ing adddatesetdlg.h...
+         Moc'ing comm_check.h...
+         Moc'ing droptable.h...
+         Moc'ing importoneied.h...
+         Moc'ing inputdialog.h...
+         Moc'ing mainwindow.h...
+         Moc'ing rptchange.h...
+         Moc'ing legitimacyverification.h...
+         Moc'ing logicmap.h...
+         Moc'ing terminaltypecheck.h...
+         Moc'ing userdefinedelegate.h...
+         Uic'ing adddatesetdlg.ui...
+         Uic'ing importoneied.ui...
+         Uic'ing inputdialog.ui...
+         Uic'ing mainwindow.ui...
+     1>D:\Qt\Project\Configuration V1.2\mainwindow.ui : warning : The name 'layoutWidget' (QWidget) is already in use, defaulting to 'layoutWidget1'.
+         Uic'ing rptchange.ui...
+         Uic'ing comm_check.ui...
+         Uic'ing legitimacyverification.ui...
+         Uic'ing terminaltypecheck.ui...
+         Uic'ing logicmap.ui...
+     1>D:\Qt\Project\Configuration V1.2\logicmap.ui : warning : The name 'layoutWidget' (QWidget) is already in use, defaulting to 'layoutWidget1'.
+         Uic'ing stationpara.ui...
+         Uic'ing iecconfig.ui...
+         Uic'ing applyoneied.ui...
+         Uic'ing timeservice.ui...
+         Uic'ing batchimportcid.ui...
+         Uic'ing reload.ui...
+         Uic'ing mmsextra.ui...
+         Uic'ing exportcid.ui...
+         Uic'ing compareied.ui...
+         Uic'ing datatemplate.ui...
+         Uic'ing datadescchange.ui...
+         Uic'ing importxls.ui...
+         Uic'ing importxls_rs.ui...
+         Uic'ing mergescd.ui...
+         Uic'ing mergecompare.ui...
+         Uic'ing wait_dlg.ui...
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_adddatesetdlg.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_adddatesetdlg.cpp, Release\moc_adddatesetdlg.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_applyoneied.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_applyoneied.cpp, Release\moc_applyoneied.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_batchimportcid.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_batchimportcid.cpp, Release\moc_batchimportcid.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_comm_check.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_comm_check.cpp, Release\moc_comm_check.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_compareied.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_compareied.cpp, Release\moc_compareied.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_datadescchange.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_datadescchange.cpp, Release\moc_datadescchange.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_datatemplate.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_datatemplate.cpp, Release\moc_datatemplate.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_droptable.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_droptable.cpp, Release\moc_droptable.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_exportcid.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_exportcid.cpp, Release\moc_exportcid.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_iecconfig.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_iecconfig.cpp, Release\moc_iecconfig.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_importoneied.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_importoneied.cpp, Release\moc_importoneied.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_importxls.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_importxls.cpp, Release\moc_importxls.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_importxls_rs.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_importxls_rs.cpp, Release\moc_importxls_rs.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_inputdialog.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_inputdialog.cpp, Release\moc_inputdialog.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_legitimacyverification.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_legitimacyverification.cpp, Release\moc_legitimacyverification.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_logicmap.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_logicmap.cpp, Release\moc_logicmap.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_mainwindow.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_mainwindow.cpp, Release\moc_mainwindow.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_mergecompare.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_mergecompare.cpp, Release\moc_mergecompare.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_mergescd.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_mergescd.cpp, Release\moc_mergescd.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_mmsextra.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_mmsextra.cpp, Release\moc_mmsextra.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_reload.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_reload.cpp, Release\moc_reload.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_rptchange.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_rptchange.cpp, Release\moc_rptchange.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_stationpara.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_stationpara.cpp, Release\moc_stationpara.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_terminaltypecheck.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_terminaltypecheck.cpp, Release\moc_terminaltypecheck.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_timeservice.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_timeservice.cpp, Release\moc_timeservice.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_userdefinedelegate.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_userdefinedelegate.cpp, Release\moc_userdefinedelegate.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_wait_dlg.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_wait_dlg.cpp, Release\moc_wait_dlg.cpp.
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I. /IC:\Qt\Qt5.6.1\5.6\msvc2013\include /IC:\Qt\Qt5.6.1\5.6\msvc2013\include\QtWidgets /IC:\Qt\Qt5.6.1\5.6\msvc2013\include\QtGui /IC:\Qt\Qt5.6.1\5.6\msvc2013\include\QtANGLE /IC:\Qt\Qt5.6.1\5.6\msvc2013\include\QtCore /Idebug /IC:\Qt\Qt5.6.1\5.6\msvc2013\include\QtXml /IC:\Qt\Qt5.6.1\5.6\msvc2013\include\QtXmlPatterns /I"C:\Qt\Qt5.6.1\5.6\msvc2013\mkspecs\win32-msvc2013" /I.\GeneratedFiles /ID:\Qt\Project\Configuration\xercesc /IC:\Qt\Qt5.6.1\5.6\msvc2013\include\QtSql /IC:\Qt\Qt5.6.1\5.6\msvc2013\include\ActiveQt /IC:\Qt\Qt5.6.1\5.6\msvc2013\include\QtScript /ID:\Qt\Project\Configuration\include_cpp /nologo /W3 /WX- /O2 /Oy- /D _WINDOWS /D UNICODE /D WIN32 /D QT_NO_DEBUG /D QT_PLUGIN /D QT_WIDGETS_LIB /D QT_GUI_LIB /D QT_CORE_LIB /D NDEBUG /D QT_SQL_LIB /D QT_SCRIPT_LIB /D _USING_V110_SDK71_ /Gm- /EHsc /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo"Win32\Release\\" /Fd"Win32\Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt -Zc:strictStrings -w34100 -w34189 -w44996 adddatesetdlg.cpp applyoneied.cpp batchimportcid.cpp comm_check.cpp compareied.cpp CRC32.cpp datadescchange.cpp datatemplate.cpp droptable.cpp exportcid.cpp globfun.cpp iecconfig.cpp importoneied.cpp importxls.cpp importxls_rs.cpp inputdialog.cpp legitimacyverification.cpp logicmap.cpp main.cpp mainwindow.cpp mainwindowcheck.cpp mainwindowcomm.cpp mainwindowdate.cpp mainwindowgse.cpp mainwindowheader.cpp mainwindowied.cpp mainwindowinput.cpp mainwindowld.cpp mainwindowln.cpp mainwindowlog.cpp mainwindowrpt.cpp mainwindowsmv.cpp mainwindowstation.cpp mainwindowsubnet.cpp MemberFxn.cpp mergecompare.cpp mergescd.cpp MessageHandler.cpp mmsextra.cpp Release\moc_adddatesetdlg.cpp Release\moc_applyoneied.cpp Release\moc_batchimportcid.cpp Release\moc_comm_check.cpp Release\moc_compareied.cpp Release\moc_datadescchange.cpp Release\moc_datatemplate.cpp Release\moc_droptable.cpp Release\moc_exportcid.cpp Release\moc_iecconfig.cpp Release\moc_importoneied.cpp Release\moc_importxls.cpp Release\moc_importxls_rs.cpp Release\moc_inputdialog.cpp Release\moc_legitimacyverification.cpp Release\moc_logicmap.cpp Release\moc_mainwindow.cpp Release\moc_mergecompare.cpp Release\moc_mergescd.cpp Release\moc_mmsextra.cpp Release\moc_reload.cpp Release\moc_rptchange.cpp Release\moc_stationpara.cpp Release\moc_terminaltypecheck.cpp Release\moc_timeservice.cpp Release\moc_userdefinedelegate.cpp Release\moc_wait_dlg.cpp reload.cpp rptchange.cpp SAX2FilterHandlers.cpp SAX2PrintHandlers.cpp scdtree.cpp SchemaCheck.cpp stationpara.cpp terminaltypecheck.cpp Thunk.cpp timeservice.cpp tinystr.cpp tinyxml.cpp tinyxmlerror.cpp tinyxmlparser.cpp userdefinedelegate.cpp wait_dlg.cpp XML.cpp
+         adddatesetdlg.cpp
+         applyoneied.cpp
+         batchimportcid.cpp
+     1>batchimportcid.cpp(231): warning C4189: “flag”: 局部变量已初始化但不引用
+         comm_check.cpp
+         compareied.cpp
+         CRC32.cpp
+         datadescchange.cpp
+         datatemplate.cpp
+         droptable.cpp
+         exportcid.cpp
+         globfun.cpp
+         iecconfig.cpp
+     1>iecconfig.cpp(271): warning C4100: “EndIndex”: 未引用的形参
+     1>iecconfig.cpp(271): warning C4100: “StartIndex”: 未引用的形参
+     1>iecconfig.cpp(308): warning C4189: “ret”: 局部变量已初始化但不引用
+         importoneied.cpp
+         importxls.cpp
+         importxls_rs.cpp
+         inputdialog.cpp
+     1>inputdialog.cpp(133): warning C4189: “iwidth”: 局部变量已初始化但不引用
+     1>inputdialog.cpp(1162): warning C4100: “colum”: 未引用的形参
+     1>inputdialog.cpp(1276): warning C4100: “pos”: 未引用的形参
+         legitimacyverification.cpp
+         logicmap.cpp
+     1>logicmap.cpp(894): warning C4189: “recode”: 局部变量已初始化但不引用
+         main.cpp
+         mainwindow.cpp
+     1>mainwindow.cpp(432): warning C4100: “SCDPoint”: 未引用的形参
+     1>mainwindow.cpp(752): warning C4100: “pos”: 未引用的形参
+     1>mainwindow.cpp(756): warning C4100: “pos”: 未引用的形参
+     1>mainwindow.cpp(760): warning C4100: “index”: 未引用的形参
+     1>mainwindow.cpp(764): warning C4100: “column”: 未引用的形参
+     1>mainwindow.cpp(1737): warning C4189: “recode”: 局部变量已初始化但不引用
+     1>mainwindow.cpp(2187): warning C4100: “pos”: 未引用的形参
+     1>mainwindow.cpp(2243): warning C4189: “ret”: 局部变量已初始化但不引用
+     1>mainwindow.cpp(2253): warning C4189: “ret”: 局部变量已初始化但不引用
+     1>mainwindow.cpp(2262): warning C4189: “ret”: 局部变量已初始化但不引用
+     1>mainwindow.cpp(2274): warning C4101: “recode”: 未引用的局部变量
+     1>mainwindow.cpp(2296): warning C4189: “ret”: 局部变量已初始化但不引用
+     1>mainwindow.cpp(2340): warning C4100: “state”: 未引用的形参
+         正在生成代码...
+     1>d:\qt\project\configuration v1.2\inputdialog.cpp(1275): warning C4715: “InputDialog::Filter_datainst”: 不是所有的控件路径都返回值
+         正在编译...
+         mainwindowcheck.cpp
+     1>.\xercesc/util/Xerces_autoconf_config.hpp(101): error C2146: 语法错误: 缺少“;”(在标识符“XMLSSize_t”的前面)
+     1>.\xercesc/util/Xerces_autoconf_config.hpp(101): error C4430: 缺少类型说明符 - 假定为 int。注意:  C++ 不支持默认 int
+         mainwindowcomm.cpp
+     1>mainwindowcomm.cpp(20): warning C4100: “index”: 未引用的形参
+     1>mainwindowcomm.cpp(124): warning C4100: “bottomRight”: 未引用的形参
+     1>mainwindowcomm.cpp(124): warning C4100: “topLeft”: 未引用的形参
+         mainwindowdate.cpp
+     1>mainwindowdate.cpp(144): warning C4100: “index”: 未引用的形参
+     1>mainwindowdate.cpp(663): warning C4100: “LNlist”: 未引用的形参
+     1>mainwindowdate.cpp(786): warning C4100: “column”: 未引用的形参
+         mainwindowgse.cpp
+         mainwindowheader.cpp
+     1>mainwindowheader.cpp(64): warning C4101: “recode”: 未引用的局部变量
+         mainwindowied.cpp
+         mainwindowinput.cpp
+     1>mainwindowinput.cpp(145): warning C4100: “data”: 未引用的形参
+     1>mainwindowinput.cpp(145): warning C4100: “row”: 未引用的形参
+         mainwindowld.cpp
+     1>mainwindowld.cpp(100): warning C4189: “m”: 局部变量已初始化但不引用
+         mainwindowln.cpp
+         mainwindowlog.cpp
+         mainwindowrpt.cpp
+         mainwindowsmv.cpp
+     1>mainwindowsmv.cpp(102): warning C4101: “recode”: 未引用的局部变量
+         mainwindowstation.cpp
+         mainwindowsubnet.cpp
+     1>mainwindowsubnet.cpp(102): warning C4100: “bottomRight”: 未引用的形参
+     1>mainwindowsubnet.cpp(111): warning C4101: “bStatus”: 未引用的局部变量
+     1>mainwindowsubnet.cpp(293): warning C4100: “bottomRight”: 未引用的形参
+     1>mainwindowsubnet.cpp(429): warning C4100: “bottomRight”: 未引用的形参
+     1>mainwindowsubnet.cpp(669): warning C4100: “index”: 未引用的形参
+         MemberFxn.cpp
+         mergecompare.cpp
+     1>mergecompare.cpp(96): warning C4100: “bottomRight”: 未引用的形参
+     1>mergecompare.cpp(96): warning C4100: “topLeft”: 未引用的形参
+         mergescd.cpp
+         MessageHandler.cpp
+         mmsextra.cpp
+     1>mmsextra.cpp(201): warning C4100: “bottomRight”: 未引用的形参
+     1>mmsextra.cpp(366): warning C4100: “bottomRight”: 未引用的形参
+     1>mmsextra.cpp(506): warning C4100: “bottomRight”: 未引用的形参
+         moc_adddatesetdlg.cpp
+         正在生成代码...
+         正在编译...
+         moc_applyoneied.cpp
+         moc_batchimportcid.cpp
+         moc_comm_check.cpp
+         moc_compareied.cpp
+         moc_datadescchange.cpp
+         moc_datatemplate.cpp
+         moc_droptable.cpp
+         moc_exportcid.cpp
+         moc_iecconfig.cpp
+         moc_importoneied.cpp
+         moc_importxls.cpp
+         moc_importxls_rs.cpp
+         moc_inputdialog.cpp
+         moc_legitimacyverification.cpp
+         moc_logicmap.cpp
+         moc_mainwindow.cpp
+         moc_mergecompare.cpp
+         moc_mergescd.cpp
+         moc_mmsextra.cpp
+         moc_reload.cpp
+         正在生成代码...
+         正在编译...
+         moc_rptchange.cpp
+         moc_stationpara.cpp
+         moc_terminaltypecheck.cpp
+         moc_timeservice.cpp
+         moc_userdefinedelegate.cpp
+         moc_wait_dlg.cpp
+         reload.cpp
+         rptchange.cpp
+         SAX2FilterHandlers.cpp
+     1>.\xercesc/util/Xerces_autoconf_config.hpp(101): error C2146: 语法错误: 缺少“;”(在标识符“XMLSSize_t”的前面)
+     1>.\xercesc/util/Xerces_autoconf_config.hpp(101): error C4430: 缺少类型说明符 - 假定为 int。注意:  C++ 不支持默认 int
+         SAX2PrintHandlers.cpp
+     1>.\xercesc/util/Xerces_autoconf_config.hpp(101): error C2146: 语法错误: 缺少“;”(在标识符“XMLSSize_t”的前面)
+     1>.\xercesc/util/Xerces_autoconf_config.hpp(101): error C4430: 缺少类型说明符 - 假定为 int。注意:  C++ 不支持默认 int
+         scdtree.cpp
+     1>scdtree.cpp(929): warning C4100: “index”: 未引用的形参
+     1>scdtree.cpp(2322): warning C4100: “EnumMap”: 未引用的形参
+     1>scdtree.cpp(2410): warning C4100: “LNMap”: 未引用的形参
+     1>scdtree.cpp(2476): warning C4100: “LNMap”: 未引用的形参
+     1>scdtree.cpp(2482): warning C4189: “m_Node_IN”: 局部变量已初始化但不引用
+     1>scdtree.cpp(2584): warning C4100: “LNMap”: 未引用的形参
+     1>scdtree.cpp(3824): warning C4100: “state”: 未引用的形参
+     1>scdtree.cpp(5409): warning C4100: “RefList”: 未引用的形参
+     1>scdtree.cpp(5409): warning C4100: “warnList”: 未引用的形参
+     1>scdtree.cpp(5409): warning C4100: “errList”: 未引用的形参
+     1>scdtree.cpp(6232): warning C4100: “state”: 未引用的形参
+     1>scdtree.cpp(6743): warning C4189: “m_Text”: 局部变量已初始化但不引用
+     1>scdtree.cpp(6741): warning C4189: “m_DAI”: 局部变量已初始化但不引用
+     1>scdtree.cpp(8333): warning C4100: “state”: 未引用的形参
+     1>scdtree.cpp(9669): warning C4100: “state”: 未引用的形参
+     1>scdtree.cpp(9812): warning C4100: “state”: 未引用的形参
+     1>scdtree.cpp(11038): warning C4100: “state”: 未引用的形参
+     1>scdtree.cpp(11204): warning C4100: “stat”: 未引用的形参
+     1>scdtree.cpp(12066): warning C4189: “flag”: 局部变量已初始化但不引用
+     1>scdtree.cpp(14374): warning C4189: “m_DAI”: 局部变量已初始化但不引用
+     1>scdtree.cpp(14537): warning C4189: “m_DAI”: 局部变量已初始化但不引用
+     1>scdtree.cpp(14955): warning C4189: “m_DataSet”: 局部变量已初始化但不引用
+     1>scdtree.cpp(15143): warning C4189: “chName”: 局部变量已初始化但不引用
+     1>scdtree.cpp(15142): warning C4189: “ch”: 局部变量已初始化但不引用
+     1>scdtree.cpp(15141): warning C4189: “chr”: 局部变量已初始化但不引用
+     1>scdtree.cpp(15674): warning C4100: “SmvList”: 未引用的形参
+         SchemaCheck.cpp
+         stationpara.cpp
+         terminaltypecheck.cpp
+         Thunk.cpp
+         timeservice.cpp
+         tinystr.cpp
+         tinyxml.cpp
+     1>tinyxml.cpp(714): warning C4189: “str”: 局部变量已初始化但不引用
+         tinyxmlerror.cpp
+         tinyxmlparser.cpp
+         正在生成代码...
+     1>d:\qt\project\configuration v1.2\scdtree.cpp(7511): warning C4715: “ScdTree::Compare”: 不是所有的控件路径都返回值
+         正在编译...
+         userdefinedelegate.cpp
+     1>userdefinedelegate.cpp(14): warning C4100: “index”: 未引用的形参
+     1>userdefinedelegate.cpp(13): warning C4100: “option”: 未引用的形参
+     1>userdefinedelegate.cpp(58): warning C4100: “index”: 未引用的形参
+     1>userdefinedelegate.cpp(57): warning C4100: “option”: 未引用的形参
+     1>userdefinedelegate.cpp(101): warning C4100: “index”: 未引用的形参
+     1>userdefinedelegate.cpp(100): warning C4100: “option”: 未引用的形参
+     1>userdefinedelegate.cpp(144): warning C4100: “index”: 未引用的形参
+     1>userdefinedelegate.cpp(143): warning C4100: “option”: 未引用的形参
+     1>userdefinedelegate.cpp(188): warning C4100: “index”: 未引用的形参
+     1>userdefinedelegate.cpp(187): warning C4100: “option”: 未引用的形参
+     1>userdefinedelegate.cpp(296): warning C4100: “index”: 未引用的形参
+     1>userdefinedelegate.cpp(310): warning C4100: “index”: 未引用的形参
+     1>userdefinedelegate.cpp(309): warning C4100: “model”: 未引用的形参
+     1>userdefinedelegate.cpp(400): warning C4100: “parent”: 未引用的形参
+     1>userdefinedelegate.cpp(405): warning C4100: “parent”: 未引用的形参
+     1>userdefinedelegate.cpp(437): warning C4100: “index”: 未引用的形参
+     1>userdefinedelegate.cpp(436): warning C4100: “option”: 未引用的形参
+     1>userdefinedelegate.cpp(578): warning C4100: “parent”: 未引用的形参
+     1>userdefinedelegate.cpp(583): warning C4100: “parent”: 未引用的形参
+     1>userdefinedelegate.cpp(719): warning C4100: “parent”: 未引用的形参
+     1>userdefinedelegate.cpp(724): warning C4100: “parent”: 未引用的形参
+     1>userdefinedelegate.cpp(755): warning C4100: “index”: 未引用的形参
+     1>userdefinedelegate.cpp(754): warning C4100: “option”: 未引用的形参
+     1>userdefinedelegate.cpp(801): warning C4100: “index”: 未引用的形参
+     1>userdefinedelegate.cpp(800): warning C4100: “option”: 未引用的形参
+     1>userdefinedelegate.cpp(848): warning C4100: “index”: 未引用的形参
+     1>userdefinedelegate.cpp(847): warning C4100: “option”: 未引用的形参
+     1>userdefinedelegate.cpp(895): warning C4100: “index”: 未引用的形参
+     1>userdefinedelegate.cpp(894): warning C4100: “option”: 未引用的形参
+     1>userdefinedelegate.cpp(941): warning C4100: “index”: 未引用的形参
+     1>userdefinedelegate.cpp(940): warning C4100: “option”: 未引用的形参
+     1>userdefinedelegate.cpp(987): warning C4100: “index”: 未引用的形参
+     1>userdefinedelegate.cpp(986): warning C4100: “option”: 未引用的形参
+         wait_dlg.cpp
+         XML.cpp
+     1>XML.cpp(682): warning C4101: “IED_Doc”: 未引用的局部变量
+     1>XML.cpp(859): warning C4101: “m_child”: 未引用的局部变量
+     1>XML.cpp(1315): warning C4189: “m_IED”: 局部变量已初始化但不引用
+     1>XML.cpp(1316): warning C4189: “m_communication”: 局部变量已初始化但不引用
+     1>XML.cpp(1617): warning C4189: “m_text”: 局部变量已初始化但不引用
+         正在生成代码...
+     1>已完成生成项目“D:\Qt\Project\Configuration V1.2\Configuration.vcxproj”(Build 个目标)的操作 - 失败。
+
+生成失败。
+
+已用时间 00:02:32.57

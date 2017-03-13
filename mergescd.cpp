@@ -1,0 +1,143 @@
+﻿#include "mergescd.h"
+
+MergeSCD::MergeSCD(QWidget *parent)
+	: QDialog(parent)
+{
+	ui.setupUi(this);
+    m_Point_base =new ScdTree;
+    m_Point_merge=new ScdTree;
+    connect(ui.pushButton_Apply, SIGNAL(clicked(bool)), this, SLOT(Pushbutton_Apply()));
+    connect(ui.pushButton_Base, SIGNAL(clicked(bool)), this, SLOT(Pushbutton_OpenBase()));
+    connect(ui.pushButton_Cancel, SIGNAL(clicked(bool)), this, SLOT(Pushbutton_Cancel()));
+    connect(ui.pushButton_Merge, SIGNAL(clicked(bool)), this, SLOT(Pushbutton_OpenMerge()));
+    connect(ui.pushButton_New, SIGNAL(clicked(bool)), this, SLOT(Pushbutton_OpenNew()));
+	ui.pushButton_Apply->setEnabled(false);
+}
+
+MergeSCD::~MergeSCD()
+{
+
+}
+void MergeSCD::Init_dlg()
+{
+    ui.pushButton_Apply->setText(tr("OK"));
+    ui.pushButton_Base->setText(tr("Browse"));
+    ui.pushButton_Cancel->setText(tr("Cancel"));
+    ui.pushButton_Merge->setText(tr("Browse"));
+    ui.pushButton_New->setText(tr("Browse"));
+    ui.label->setText(tr("Merge two file to a new file"));
+    ui.label_Base->setText(tr("Base File:"));
+    ui.label_Merge->setText(tr("Merge FIle:"));
+    ui.label_New->setText(tr("New File:"));
+}
+void MergeSCD::Pushbutton_Apply()
+{
+    if(m_Point_base->LoadSCD(ui.lineEdit_Base->text())==DO_OK)
+    {
+        m_Point_base->GetIEDList(List_Base);
+        if(m_Point_merge->LoadSCD(ui.lineEdit_Merge->text())==DO_OK)
+        {
+            m_Point_merge->GetIEDList(List_Merge);
+			if (List_Merge.size()==0)
+			{
+				QMessageBox::about(this, tr("Notice"), tr("The Merge SCD do not has IED,Reselect file"));
+				return;
+			}
+            for(int i =0;i<List_Merge.size();i++)
+            {
+                IED_MAP.insert(i,List_Merge.at(i));
+            }
+            MergeCompare m_dlg;
+            m_dlg.IED_List = List_Base;
+			m_dlg.IED_MAP = IED_MAP;
+			m_dlg.Init_dlg();
+			m_dlg.Display();
+           if( m_dlg.exec()==QDialog::Accepted)
+           {
+            for(int i=0;i<m_dlg.Finil_MAP.uniqueKeys().size();i++)
+            {
+                int recode;
+                TiXmlDocument* m_doc =new TiXmlDocument;
+                m_Point_merge->ExportCID_Node(m_dlg.Finil_MAP.uniqueKeys().at(i),m_dlg.Finil_MAP.value(m_dlg.Finil_MAP.uniqueKeys().at(i)).s_IEDname,m_doc);
+                recode= m_Point_base->ImportCID_Node(m_dlg.Finil_MAP.value(m_dlg.Finil_MAP.uniqueKeys().at(i)).s_IEDname,m_doc);
+            }
+            m_Point_base->SaveSCD(ui.lineEdit_New->text());
+           }
+
+        }else
+        {
+            QMessageBox::about(this,tr("Notice"),tr("The Merge SCD file open error"));
+
+        }
+    }else
+    {
+        QMessageBox::about(this,tr("Notice"),tr("The Base SCD file open error"));
+    }
+
+    accept();
+}
+
+void MergeSCD::Pushbutton_Cancel()
+{
+    reject();
+}
+
+void MergeSCD::Pushbutton_OpenBase()
+{
+	ui.lineEdit_Base->clear();
+    QString fileName = QFileDialog::getOpenFileName(this,
+		tr("Select SCD"), QDir::currentPath(), tr("SCD Files (*.SCD)"));
+	if (!fileName.isEmpty())
+	{
+		state_base = true;
+		ui.lineEdit_Base->setText(fileName);
+	}
+	if ((state_base == true) && (state_merge == true) && (state_new == true))
+	{
+		ui.pushButton_Apply->setEnabled(true);
+	}
+else
+{
+	ui.pushButton_Apply->setEnabled(false);
+}
+}
+
+void MergeSCD::Pushbutton_OpenMerge()
+{
+	ui.lineEdit_Merge->clear();
+    QString fileName = QFileDialog::getOpenFileName(this,
+		tr("Select SCD"), QDir::currentPath(), tr("SCD Files (*.SCD)"));
+	if (!fileName.isEmpty())
+	{
+		state_merge = true;
+		ui.lineEdit_Merge->setText(fileName);
+	}
+	if ((state_base == true) && (state_merge == true) && (state_new == true))
+	{
+		ui.pushButton_Apply->setEnabled(true);
+	}
+	else
+	{
+		ui.pushButton_Apply->setEnabled(false);
+	}
+}
+void MergeSCD::Pushbutton_OpenNew()
+{
+	ui.lineEdit_New->clear();
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Save File"),
+		QDir::currentPath(),
+                               tr("SCD Files(*.SCD)"));
+	if (!fileName.isEmpty())
+	{
+		state_new = true;
+		ui.lineEdit_New->setText(fileName);
+	}
+	if ((state_base == true) && (state_merge == true) && (state_new == true))
+	{
+		ui.pushButton_Apply->setEnabled(true);
+	}
+	else
+	{
+		ui.pushButton_Apply->setEnabled(false);
+	}
+}

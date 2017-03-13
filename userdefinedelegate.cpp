@@ -1,0 +1,1021 @@
+﻿#include <QtGui>
+#include "userdefinedelegate.h"
+#include <QMessageBox>
+#include <QDateTimeEdit>
+#include <QComboBox>
+SubNetTypeCombobox::SubNetTypeCombobox(QObject *parent)
+: QItemDelegate(parent)
+{
+
+}
+
+QWidget *SubNetTypeCombobox::createEditor(QWidget *parent,
+                                              const QStyleOptionViewItem & option ,
+                                              const QModelIndex & index ) const
+{
+
+    QComboBox* editor=new QComboBox(parent);
+
+    editor->addItem(tr("8-MMS"));
+    editor->addItem(tr("GOOSE"));
+    editor->addItem(tr("SMV"));
+    return editor;
+
+}
+
+void SubNetTypeCombobox::setEditorData(QWidget *editor,
+                                           const QModelIndex &index) const
+{
+
+    QString str=index.model()->data(index).toString();
+    QComboBox* box=static_cast<QComboBox*>(editor);
+    int i=box->findText(str);
+    box->setCurrentIndex(i);
+}
+
+void SubNetTypeCombobox::setModelData(QWidget *editor, QAbstractItemModel *model,
+                                          const QModelIndex &index) const
+{
+
+    QComboBox* box=static_cast<QComboBox*>(editor);
+    QString str=box->currentText();
+    model->setData(index,str);
+}
+
+void SubNetTypeCombobox::updateEditorGeometry(QWidget *editor,
+                                                  const QStyleOptionViewItem &option, const QModelIndex &/* index */) const
+{
+    editor->setGeometry(option.rect);
+}
+DataSetListCombox::DataSetListCombox(QObject *parent)
+: QItemDelegate(parent)
+{
+ 
+}
+
+QWidget *DataSetListCombox::createEditor(QWidget *parent,
+                                              const QStyleOptionViewItem & option ,
+                                              const QModelIndex & index ) const
+{
+
+    QComboBox* editor=new QComboBox(parent);
+
+    editor->addItems(DatasetList);
+
+    return editor;
+
+}
+
+void DataSetListCombox::setEditorData(QWidget *editor,
+                                           const QModelIndex &index) const
+{
+
+    QString str=index.model()->data(index).toString();
+    QComboBox* box=static_cast<QComboBox*>(editor);
+    int i=box->findText(str);
+    box->setCurrentIndex(i);
+}
+
+void DataSetListCombox::setModelData(QWidget *editor, QAbstractItemModel *model,
+                                          const QModelIndex &index) const
+{
+
+    QComboBox* box=static_cast<QComboBox*>(editor);
+    QString str=box->currentText();
+    model->setData(index,str);
+}
+
+void DataSetListCombox::updateEditorGeometry(QWidget *editor,
+                                                  const QStyleOptionViewItem &option, const QModelIndex &/* index */) const
+{
+    editor->setGeometry(option.rect);
+}
+GOOSETypeCombox::GOOSETypeCombox(QObject *parent)
+: QItemDelegate(parent)
+{
+
+}
+
+QWidget *GOOSETypeCombox::createEditor(QWidget *parent,
+                                              const QStyleOptionViewItem & option ,
+                                              const QModelIndex & index ) const
+{
+
+    QComboBox* editor=new QComboBox(parent);
+
+    editor->addItem(tr("GOOSE"));
+    editor->addItem(tr("GSSE"));
+    return editor;
+
+}
+
+void GOOSETypeCombox::setEditorData(QWidget *editor,
+                                           const QModelIndex &index) const
+{
+
+    QString str=index.model()->data(index).toString();
+    QComboBox* box=static_cast<QComboBox*>(editor);
+    int i=box->findText(str);
+    box->setCurrentIndex(i);
+}
+
+void GOOSETypeCombox::setModelData(QWidget *editor, QAbstractItemModel *model,
+                                          const QModelIndex &index) const
+{
+
+    QComboBox* box=static_cast<QComboBox*>(editor);
+    QString str=box->currentText();
+    model->setData(index,str);
+}
+
+void GOOSETypeCombox::updateEditorGeometry(QWidget *editor,
+                                                  const QStyleOptionViewItem &option, const QModelIndex &/* index */) const
+{
+    editor->setGeometry(option.rect);
+}
+BOOLTypeCombox::BOOLTypeCombox(QObject *parent)
+: QItemDelegate(parent)
+{
+
+}
+
+QWidget *BOOLTypeCombox::createEditor(QWidget *parent,
+                                              const QStyleOptionViewItem & option ,
+                                              const QModelIndex & index ) const
+{
+
+    QComboBox* editor=new QComboBox(parent);
+
+    editor->addItem("true");
+    editor->addItem("false");
+    editor->setCurrentText("false");
+    return editor;
+
+}
+
+void BOOLTypeCombox::setEditorData(QWidget *editor,
+                                           const QModelIndex &index) const
+{
+
+    QString str=index.model()->data(index).toString();
+    QComboBox* box=static_cast<QComboBox*>(editor);
+    int i=box->findText(str);
+    box->setCurrentIndex(i);
+}
+
+void BOOLTypeCombox::setModelData(QWidget *editor, QAbstractItemModel *model,
+                                          const QModelIndex &index) const
+{
+
+    QComboBox* box=static_cast<QComboBox*>(editor);
+    QString str=box->currentText();
+    model->setData(index,str);
+}
+
+void BOOLTypeCombox::updateEditorGeometry(QWidget *editor,
+                                                  const QStyleOptionViewItem &option, const QModelIndex &/* index */) const
+{
+    editor->setGeometry(option.rect);
+}
+YES_NOCombox::YES_NOCombox(QObject *parent)
+: QItemDelegate(parent)
+{
+
+}
+
+QWidget *YES_NOCombox::createEditor(QWidget *parent,
+	const QStyleOptionViewItem & option,
+	const QModelIndex & index) const
+{
+
+	QComboBox* editor = new QComboBox(parent);
+
+	editor->addItem(tr("YES"));
+	editor->addItem(tr("NO"));
+	editor->setCurrentText(tr("YES"));
+	return editor;
+
+}
+
+void YES_NOCombox::setEditorData(QWidget *editor,
+	const QModelIndex &index) const
+{
+
+	QString str = index.model()->data(index).toString();
+	QComboBox* box = static_cast<QComboBox*>(editor);
+	int i = box->findText(str);
+	box->setCurrentIndex(i);
+}
+
+void YES_NOCombox::setModelData(QWidget *editor, QAbstractItemModel *model,
+	const QModelIndex &index) const
+{
+
+	QComboBox* box = static_cast<QComboBox*>(editor);
+	QString str = box->currentText();
+	model->setData(index, str);
+}
+
+void YES_NOCombox::updateEditorGeometry(QWidget *editor,
+	const QStyleOptionViewItem &option, const QModelIndex &/* index */) const
+{
+	editor->setGeometry(option.rect);
+}
+BOOLCheckBox::BOOLCheckBox(QObject *parent)
+: QItemDelegate(parent)
+ {
+ }
+
+ QWidget *BOOLCheckBox::createEditor(QWidget *parent,
+     const QStyleOptionViewItem &/* option */,
+     const QModelIndex &/* index */) const
+ {
+
+     QCheckBox *editor = new QCheckBox(parent);
+     editor->setCheckable(false);
+     return editor;
+ }
+
+ void BOOLCheckBox::setEditorData(QWidget *editor,
+                                     const QModelIndex &index) const
+ {
+     int value = index.model()->data(index, Qt::EditRole).toInt();
+
+     QCheckBox *spinBox = static_cast<QCheckBox*>(editor);
+     if(value)
+         spinBox->setCheckState(Qt::Checked);
+     else
+         spinBox->setCheckState(Qt::Unchecked);
+ }
+
+ void BOOLCheckBox::setModelData(QWidget *editor, QAbstractItemModel *model,
+                                    const QModelIndex &index) const
+ {
+     QCheckBox *spinBox = static_cast<QCheckBox*>(editor);
+     //spinBox->interpretText();
+     int value = spinBox->checkState();
+
+     model->setData(index, value, Qt::EditRole);
+ }
+
+ void BOOLCheckBox::updateEditorGeometry(QWidget *editor,
+     const QStyleOptionViewItem &option, const QModelIndex &/* index */) const
+ {
+     editor->setGeometry(option.rect);
+ }
+
+
+ CheckBoxName::CheckBoxName(QObject *parent)
+	 : QItemDelegate(parent)
+ {
+ }
+
+ QWidget *CheckBoxName::createEditor(QWidget *parent,
+	 const QStyleOptionViewItem &/* option */,
+	 const QModelIndex &/* index */) const
+ {
+
+	 QCheckBox* m_Box = new QCheckBox(parent);
+	
+	 m_Box->setCheckable(true);
+	 return m_Box;
+ }
+
+ void CheckBoxName::setEditorData(QWidget *editor,
+	 const QModelIndex &index) const
+ {
+	 int value = index.model()->data(index, Qt::EditRole).toInt();
+
+	 QCheckBox *m_editor = static_cast<QCheckBox*>(editor);
+	 if (value)
+		 m_editor->setCheckState(Qt::Checked);
+	 else
+		 m_editor->setCheckState(Qt::Unchecked);
+ }
+ void CheckBoxName::setEditorName(QWidget *editor,
+     const QModelIndex &index,QString name) const
+ {
+     QCheckBox *m_editor = static_cast<QCheckBox*>(editor);
+     m_editor->setText(name);
+ }
+ void CheckBoxName::setModelData(QWidget *editor, QAbstractItemModel *model,
+	 const QModelIndex &index) const
+ {
+	 QCheckBox *spinBox = static_cast<QCheckBox*>(editor);
+	 int value = spinBox->checkState();
+
+	 model->setData(index, value, Qt::EditRole);
+ }
+ QVariant  CheckBoxName::data(QWidget *editor, QAbstractItemModel *model,
+	 const QModelIndex &index) const
+ {
+	 QCheckBox *spinBox = static_cast<QCheckBox*>(editor);
+	 int value = spinBox->checkState();
+	 return value;
+ }
+ void CheckBoxName::updateEditorGeometry(QWidget *editor,
+	 const QStyleOptionViewItem &option, const QModelIndex &/* index */) const
+ {
+	 editor->setGeometry(option.rect);
+ }
+
+ CheckBoxModel::CheckBoxModel(QObject *parent)
+         : QAbstractTableModel(parent)
+ {
+	 populateModel();
+ }
+
+
+
+ bool CheckBoxModel::setData( const QModelIndex &index, const QVariant &value, int role )
+ {
+         if(!index.isValid())
+                 return false;
+		 if (role == Qt::DisplayRole)
+		 {
+			 if (index.column() == 0)
+			 {
+				 Name_map[index.row()] = value.toString();
+			 }
+			 if (index.column() == 1)
+			 {
+				 Desc_map[index.row()] = value.toString();
+			 }
+		 }
+         if (role == Qt::CheckStateRole && index.column() == 0)
+         {
+                 check_state_map[index.row()] = (value == Qt::Checked ? Qt::Checked : Qt::Unchecked);
+         }
+
+         return true;
+ }
+ QVariant CheckBoxModel::data(const QModelIndex &index, int role) const
+ {
+	 if (!index.isValid())
+		 return QVariant();
+
+	 switch (role)
+	 {
+
+	 case Qt::CheckStateRole:
+		 if (index.column() == 0)
+		 {
+			 if (check_state_map.contains(index.row()))
+				 return check_state_map[index.row()] == Qt::Checked ? Qt::Checked : Qt::Unchecked;
+		 }
+		 if (index.column() != 0)
+		 {
+			 return QVariant();
+		 }
+	 case Qt::DisplayRole:
+		 if (index.column() == 0)
+		 {
+			 if (Name_map.contains(index.row()))
+				 return Name_map[index.row()];
+
+		 }
+		 if (index.column() == 1)
+		 {
+			 if (Desc_map.contains(index.row()))
+				 return Desc_map[index.row()];
+
+
+		 }
+	 default:
+		 return QVariant();
+	 }
+	 return QVariant();
+        // return QVariant();
+ }
+ Qt::ItemFlags CheckBoxModel::flags(const QModelIndex &index) const
+ {
+         if (!index.isValid())
+                 return 0;
+
+         if (index.column() == 0)
+                 return Qt::ItemIsEnabled | Qt::ItemIsSelectable | Qt::ItemIsUserCheckable;
+
+         return  Qt::ItemIsEnabled | Qt::ItemIsSelectable;
+ }
+ int CheckBoxModel::rowCount(const QModelIndex & parent) const
+ {
+     return rowcount;
+ }
+
+ int CheckBoxModel::columnCount(const QModelIndex & parent) const
+ {
+     return columncount;
+ }
+ void CheckBoxModel::setrowcount(int row)
+ {
+		rowcount=row;
+ }
+
+ void CheckBoxModel::setcolumncount(int column)
+ {
+       columncount =column;
+ }
+ QVariant CheckBoxModel::headerData(int section, Qt::Orientation orientation, int role) const
+ {
+	 if (role == Qt::DisplayRole&&orientation == Qt::Horizontal)
+		 return header[section];
+	 return QAbstractTableModel::headerData(section, orientation, role);
+ }
+ void CheckBoxModel::populateModel()
+ {
+	 header << tr("name") << tr("desc") ;
+
+ }
+ CtModelBox::CtModelBox(QObject *parent)
+ : QItemDelegate(parent)
+ {
+
+ }
+
+ QWidget *CtModelBox::createEditor(QWidget *parent,
+                                               const QStyleOptionViewItem & option ,
+                                               const QModelIndex & index ) const
+ {
+
+     QComboBox* editor=new QComboBox(parent);
+
+     editor->addItem(tr("status-only"));
+	 editor->addItem(tr("direct-with-normal-security"));
+	 editor->addItem(tr("sbo-with-normal-security"));
+	 editor->addItem(tr("direct-with-enhanced-security"));
+	 editor->addItem(tr("sbo-with-enhanced-security"));
+
+     return editor;
+
+ }
+
+ void CtModelBox::setEditorData(QWidget *editor,
+                                            const QModelIndex &index) const
+ {
+
+     QString str=index.model()->data(index).toString();
+     QComboBox* box=static_cast<QComboBox*>(editor);
+     int i=box->findText(str);
+     box->setCurrentIndex(i);
+ }
+
+ void CtModelBox::setModelData(QWidget *editor, QAbstractItemModel *model,
+                                           const QModelIndex &index) const
+ {
+
+     QComboBox* box=static_cast<QComboBox*>(editor);
+     QString str=box->currentText();
+     model->setData(index,str);
+ }
+
+ void CtModelBox::updateEditorGeometry(QWidget *editor,
+                                                   const QStyleOptionViewItem &option, const QModelIndex &/* index */) const
+ {
+     editor->setGeometry(option.rect);
+ }
+
+
+ BatchImportModel::BatchImportModel(QObject *parent)
+         : QAbstractTableModel(parent)
+ {
+     populateModel();
+ }
+
+
+
+ bool BatchImportModel::setData( const QModelIndex &index, const QVariant &value, int role )
+ {
+         if(!index.isValid())
+                 return false;
+         if (role == Qt::DisplayRole)
+         {
+             if (index.column() == 0)
+             {
+                 Name_map[index.row()] = value.toString();
+             }
+             if (index.column() == 1)
+             {
+                 File_map[index.row()] = value.toString();
+             }
+             if (index.column() == 2)
+             {
+                 Error_map[index.row()] = value.toString();
+             }
+         }
+         if (role == Qt::CheckStateRole && index.column() == 0)
+         {
+                 check_state_map[index.row()] = (value == Qt::Checked ? Qt::Checked : Qt::Unchecked);
+         }
+          if(role==Qt::TextColorRole)
+          {
+              Color_map[index.row()] =value.value<QColor>();
+          }
+         return true;
+ }
+ QVariant BatchImportModel::data(const QModelIndex &index, int role) const
+ {
+     if (!index.isValid())
+         return QVariant();
+
+     switch (role)
+     {
+
+     case Qt::CheckStateRole:
+         if (index.column() == 0)
+         {
+             if (check_state_map.contains(index.row()))
+                 return check_state_map[index.row()] == Qt::Checked ? Qt::Checked : Qt::Unchecked;
+         }
+         if (index.column() != 0)
+         {
+             return QVariant();
+         }
+     case Qt::DisplayRole:
+         if (index.column() == 0)
+         {
+             if (Name_map.contains(index.row()))
+                 return Name_map[index.row()];
+
+         }
+         if (index.column() == 1)
+         {
+             if (File_map.contains(index.row()))
+                 return File_map[index.row()];
+
+
+         }
+         if (index.column() == 2)
+         {
+             if (Error_map.contains(index.row()))
+                 return Error_map[index.row()];
+
+
+         }
+     case Qt::TextColorRole:
+         if (index.column() == 0)
+         {
+             if (Color_map.contains(index.row()))
+                 return Color_map[index.row()];
+
+
+         }
+     default:
+         return QVariant();
+     }
+     return QVariant();
+        // return QVariant();
+ }
+ Qt::ItemFlags BatchImportModel::flags(const QModelIndex &index) const
+ {
+         if (!index.isValid())
+                 return 0;
+
+		 if (index.column() == 0)
+			 return Qt::ItemIsEnabled | Qt::ItemIsSelectable | Qt::ItemIsUserCheckable ;
+			 //return Qt::NoItemFlags;
+         return  Qt::ItemIsEnabled | Qt::ItemIsSelectable;
+ }
+ int BatchImportModel::rowCount(const QModelIndex & parent) const
+ {
+     return rowcount;
+ }
+
+ int BatchImportModel::columnCount(const QModelIndex & parent) const
+ {
+     return columncount;
+ }
+ void BatchImportModel::setrowcount(int row)
+ {
+        rowcount=row;
+ }
+
+ void BatchImportModel::setcolumncount(int column)
+ {
+       columncount =column;
+ }
+ QVariant BatchImportModel::headerData(int section, Qt::Orientation orientation, int role) const
+ {
+     if (role == Qt::DisplayRole&&orientation == Qt::Horizontal)
+         return header[section];
+     return QAbstractTableModel::headerData(section, orientation, role);
+ }
+ void BatchImportModel::populateModel()
+ {
+     header << tr("IED Name") << tr("File Path")  << tr("Error Message") ;
+
+ }
+ BatchExport::BatchExport(QObject *parent)
+         : QAbstractTableModel(parent)
+ {
+ }
+
+
+
+ bool BatchExport::setData( const QModelIndex &index, const QVariant &value, int role )
+ {
+         if(!index.isValid())
+                 return false;
+         if (role == Qt::DisplayRole)
+         {
+             if (index.column() == 0)
+             {
+                 Name_map[index.row()] = value.toString();
+             }
+             if (index.column() == 1)
+             {
+                 Type_map[index.row()] = value.toString();
+             }
+             if (index.column() == 2)
+             {
+                 Vendor_map[index.row()] = value.toString();
+             }
+             if (index.column() == 3)
+             {
+                 Desc_map[index.row()] = value.toString();
+             }
+             if (index.column() == 4)
+             {
+                 File_map[index.row()] = value.toString();
+             }
+         }
+         if (role == Qt::CheckStateRole && index.column() == 0)
+         {
+                 check_state_map[index.row()] = (value == Qt::Checked ? Qt::Checked : Qt::Unchecked);
+         }
+
+         return true;
+ }
+ QVariant BatchExport::data(const QModelIndex &index, int role) const
+ {
+     if (!index.isValid())
+         return QVariant();
+
+     switch (role)
+     {
+
+     case Qt::CheckStateRole:
+         if (index.column() == 0)
+         {
+             if (check_state_map.contains(index.row()))
+                 return check_state_map[index.row()] == Qt::Checked ? Qt::Checked : Qt::Unchecked;
+         }
+         if (index.column() != 0)
+         {
+             return QVariant();
+         }
+     case Qt::DisplayRole:
+         if (index.column() == 0)
+         {
+             if (Name_map.contains(index.row()))
+                 return Name_map[index.row()];
+
+         }
+         if (index.column() == 1)
+         {
+             if (Type_map.contains(index.row()))
+                 return Type_map[index.row()];
+
+
+         }
+         if (index.column() == 2)
+         {
+             if (Vendor_map.contains(index.row()))
+                 return Vendor_map[index.row()];
+
+
+         }
+         if (index.column() == 3)
+         {
+             if (Desc_map.contains(index.row()))
+                 return Desc_map[index.row()];
+
+
+         }
+         if (index.column() == 4)
+         {
+             if (File_map.contains(index.row()))
+                 return File_map[index.row()];
+
+
+         }
+     default:
+         return QVariant();
+     }
+     return QVariant();
+        // return QVariant();
+ }
+ Qt::ItemFlags BatchExport::flags(const QModelIndex &index) const
+ {
+         if (!index.isValid())
+                 return 0;
+
+         if (index.column() == 0)
+             return Qt::ItemIsEnabled | Qt::ItemIsSelectable | Qt::ItemIsUserCheckable ;
+//         else if (index.column() == 4)
+//             return Qt::ItemIsEnabled | Qt::ItemIsSelectable | Qt::ItemIsEditable ;
+             //return Qt::NoItemFlags;2
+         return  Qt::ItemIsEnabled | Qt::ItemIsSelectable| Qt::ItemIsSelectable;
+ }
+ int BatchExport::rowCount(const QModelIndex & parent) const
+ {
+     return rowcount;
+ }
+
+ int BatchExport::columnCount(const QModelIndex & parent) const
+ {
+     return columncount;
+ }
+ void BatchExport::setrowcount(int row)
+ {
+        rowcount=row;
+ }
+
+ void BatchExport::setcolumncount(int column)
+ {
+       columncount =column;
+ }
+ QVariant BatchExport::headerData(int section, Qt::Orientation orientation, int role) const
+ {
+     if (role == Qt::DisplayRole&&orientation == Qt::Horizontal)
+         return header[section];
+     return QAbstractTableModel::headerData(section, orientation, role);
+ }
+ void BatchExport::SetHeaderList(QStringList List)
+ {
+    header=List;
+ }
+ EditerItem::EditerItem(QObject *parent)
+	 : QItemDelegate(parent)
+ {
+
+ }
+
+ QWidget *EditerItem::createEditor(QWidget *parent,
+	 const QStyleOptionViewItem & option,
+	 const QModelIndex & index) const
+ {
+
+	 QLineEdit* editor = new QLineEdit(parent);
+	 QRegExp reg_exp("^[A-Fa-f0-9]{4}$");
+	 //QRegExp ip_reg_exp("\xhhhh");
+
+	 QRegExpValidator *validator_ip = new QRegExpValidator(reg_exp);
+
+	 editor->setValidator(validator_ip);
+	 return editor;
+
+ }
+
+ void EditerItem::setEditorData(QWidget *editor,
+	 const QModelIndex &index) const
+ {
+
+	 QString str = index.model()->data(index).toString();
+	 QLineEdit* Lineditor = static_cast<QLineEdit*>(editor);
+	 Lineditor->setText(str);
+ }
+
+ void EditerItem::setModelData(QWidget *editor, QAbstractItemModel *model,
+	 const QModelIndex &index) const
+ {
+
+	 QLineEdit* Lineditor = static_cast<QLineEdit*>(editor);
+	 QString str = Lineditor->text();
+	 model->setData(index, str);
+ }
+
+ void EditerItem::updateEditorGeometry(QWidget *editor,
+	 const QStyleOptionViewItem &option, const QModelIndex &/* index */) const
+ {
+	 editor->setGeometry(option.rect);
+ }
+
+ APPIDEditer::APPIDEditer(QObject *parent)
+	 : QItemDelegate(parent)
+ {
+
+ }
+
+ QWidget *APPIDEditer::createEditor(QWidget *parent,
+	 const QStyleOptionViewItem & option,
+	 const QModelIndex & index) const
+ {
+
+	 QLineEdit* editor = new QLineEdit(parent);
+	 QRegExp reg_exp("^[A-F0-9]{0,4}$");
+	 //QRegExp ip_reg_exp("\xhhhh");
+
+	 QRegExpValidator *validator_ip = new QRegExpValidator(reg_exp);
+
+	 editor->setValidator(validator_ip);
+     editor->setToolTip(tr("Hex 4 Digit"));
+	 return editor;
+
+ }
+
+ void APPIDEditer::setEditorData(QWidget *editor,
+	 const QModelIndex &index) const
+ {
+
+	 QString str = index.model()->data(index).toString();
+	 QLineEdit* Lineditor = static_cast<QLineEdit*>(editor);
+	 Lineditor->setText(str);
+ }
+
+ void APPIDEditer::setModelData(QWidget *editor, QAbstractItemModel *model,
+	 const QModelIndex &index) const
+ {
+
+	 QLineEdit* Lineditor = static_cast<QLineEdit*>(editor);
+	 QString str = Lineditor->text();
+	 model->setData(index, str);
+ }
+
+ void APPIDEditer::updateEditorGeometry(QWidget *editor,
+	 const QStyleOptionViewItem &option, const QModelIndex &/* index */) const
+ {
+	 editor->setGeometry(option.rect);
+ }
+
+ VLANEditer::VLANEditer(QObject *parent)
+	 : QItemDelegate(parent)
+ {
+
+ }
+
+ QWidget *VLANEditer::createEditor(QWidget *parent,
+	 const QStyleOptionViewItem & option,
+	 const QModelIndex & index) const
+ {
+
+	 QLineEdit* editor = new QLineEdit(parent);
+	 QRegExp reg_exp("^[A-F0-9]{0,3}$");
+	 //QRegExp ip_reg_exp("\xhhhh");
+
+	 QRegExpValidator *validator_ip = new QRegExpValidator(reg_exp);
+
+	 editor->setValidator(validator_ip);
+     editor->setToolTip(tr("Hex 3 Digit"));
+	 return editor;
+
+ }
+
+ void VLANEditer::setEditorData(QWidget *editor,
+	 const QModelIndex &index) const
+ {
+
+	 QString str = index.model()->data(index).toString();
+	 QLineEdit* Lineditor = static_cast<QLineEdit*>(editor);
+	 Lineditor->setText(str);
+ }
+
+ void VLANEditer::setModelData(QWidget *editor, QAbstractItemModel *model,
+	 const QModelIndex &index) const
+ {
+
+	 QLineEdit* Lineditor = static_cast<QLineEdit*>(editor);
+	 QString str = Lineditor->text();
+	 model->setData(index, str);
+ }
+
+ void VLANEditer::updateEditorGeometry(QWidget *editor,
+	 const QStyleOptionViewItem &option, const QModelIndex &/* index */) const
+ {
+	 editor->setGeometry(option.rect);
+ }
+
+ MACEditer::MACEditer(QObject *parent)
+	 : QItemDelegate(parent)
+ {
+
+ }
+
+ QWidget *MACEditer::createEditor(QWidget *parent,
+	 const QStyleOptionViewItem & option,
+	 const QModelIndex & index) const
+ {
+
+	 QLineEdit* editor = new QLineEdit(parent);
+	 QRegExp reg_exp("([0-9A-F][-])");
+	 //QRegExp ip_reg_exp("\xhhhh");
+
+	 QRegExpValidator *validator_ip = new QRegExpValidator(reg_exp);
+
+	 editor->setValidator(validator_ip);
+	 return editor;
+
+ }
+
+ void MACEditer::setEditorData(QWidget *editor,
+	 const QModelIndex &index) const
+ {
+
+	 QString str = index.model()->data(index).toString();
+	 QLineEdit* Lineditor = static_cast<QLineEdit*>(editor);
+	 Lineditor->setText(str);
+ }
+
+ void MACEditer::setModelData(QWidget *editor, QAbstractItemModel *model,
+	 const QModelIndex &index) const
+ {
+
+	 QLineEdit* Lineditor = static_cast<QLineEdit*>(editor);
+	 QString str = Lineditor->text();
+	 model->setData(index, str);
+ }
+
+ void MACEditer::updateEditorGeometry(QWidget *editor,
+	 const QStyleOptionViewItem &option, const QModelIndex &/* index */) const
+ {
+	 editor->setGeometry(option.rect);
+ }
+
+ IPEditer::IPEditer(QObject *parent)
+	 : QItemDelegate(parent)
+ {
+
+ }
+
+ QWidget *IPEditer::createEditor(QWidget *parent,
+	 const QStyleOptionViewItem & option,
+	 const QModelIndex & index) const
+ {
+
+	 QLineEdit* editor = new QLineEdit(parent);
+	 //QRegExp reg_exp("^(d{1,2}|1dd|2[0-4]d|25[0-5]).(d{1,2}|1dd|2[0-4]d|25[0-5]).(d{1,2}|1dd|2[0-4]d|25[0-5]).(d{1,2}|1dd|2[0-4]d|25[0-5])$");
+     //QRegExp reg_exp("^([0-255]).([0-255]).([0-255]).([0-255])$");
+     //////QRegExp ip_reg_exp("\xhhhh");
+
+     //QRegExpValidator *validator_ip = new QRegExpValidator(reg_exp);
+
+     //editor->setValidator(validator_ip);
+	 return editor;
+
+ }
+
+ void IPEditer::setEditorData(QWidget *editor,
+	 const QModelIndex &index) const
+ {
+
+	 QString str = index.model()->data(index).toString();
+	 QLineEdit* Lineditor = static_cast<QLineEdit*>(editor);
+	 Lineditor->setText(str);
+ }
+
+ void IPEditer::setModelData(QWidget *editor, QAbstractItemModel *model,
+	 const QModelIndex &index) const
+ {
+
+	 QLineEdit* Lineditor = static_cast<QLineEdit*>(editor);
+	 QString str = Lineditor->text();
+	 model->setData(index, str);
+ }
+
+ void IPEditer::updateEditorGeometry(QWidget *editor,
+	 const QStyleOptionViewItem &option, const QModelIndex &/* index */) const
+ {
+	 editor->setGeometry(option.rect);
+ }
+ ListCombox::ListCombox(QObject *parent)
+ : QItemDelegate(parent)
+ {
+
+ }
+
+ QWidget *ListCombox::createEditor(QWidget *parent,
+                                               const QStyleOptionViewItem & option ,
+                                               const QModelIndex & index ) const
+ {
+
+     QComboBox* editor=new QComboBox(parent);
+
+     editor->addItems(list);
+
+     return editor;
+
+ }
+
+ void ListCombox::setEditorData(QWidget *editor,
+                                            const QModelIndex &index) const
+ {
+
+     QString str=index.model()->data(index).toString();
+     QComboBox* box=static_cast<QComboBox*>(editor);
+     int i=box->findText(str);
+     box->setCurrentIndex(i);
+ }
+
+ void ListCombox::setModelData(QWidget *editor, QAbstractItemModel *model,
+                                           const QModelIndex &index) const
+ {
+
+     QComboBox* box=static_cast<QComboBox*>(editor);
+     QString str=box->currentText();
+     model->setData(index,str);
+ }
+
+ void ListCombox::updateEditorGeometry(QWidget *editor,
+                                                   const QStyleOptionViewItem &option, const QModelIndex &/* index */) const
+ {
+     editor->setGeometry(option.rect);
+ }

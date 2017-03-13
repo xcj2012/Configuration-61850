@@ -1,0 +1,52 @@
+#ifndef IECCONFIG_H
+#define IECCONFIG_H
+
+#include <QDialog>
+#include<QMessageBox>
+#include"XML.h"
+#include "stationpara.h"
+#include <QFileDialog>
+#include "applyoneied.h"
+#include <QStandardItemModel>
+#include<QItemSelectionModel>
+#include"timeservice.h"
+namespace Ui {
+class IECCONFIG;
+}
+
+class IECCONFIG : public QDialog
+{
+    Q_OBJECT
+
+public:
+    explicit IECCONFIG(QWidget *parent = 0);
+    ~IECCONFIG();
+    void Init_dlg();
+	void GetDeviceList();
+	void DisplayDevice();
+public:
+    XML *Point;
+    int Creat_flag;
+	bool Save_flag;
+	QString File_IEC;
+	QStringList headerlist;
+	QStringList IED_List;
+	QStandardItemModel *m_ModelDEV;
+	QItemSelectionModel *selectMode;
+	QVector<Device_Type>	DeviceType_List;
+private slots:
+    void pushbutton_New_click();
+    void pushbutton_Add_click();
+    void pushbutton_Del_click();
+    void pushbutton_Save_click();
+    void pushbutton_Time_click();
+    void pushbutton_Station_click();
+    void RadioButton_new_click();
+    void RadioButton_browse_click();
+	void OnDataChanged(const QModelIndex &, const QModelIndex &);
+	void OnDatadoubleClicked(const QModelIndex & index);
+private:
+    Ui::IECCONFIG *ui;
+};
+
+#endif // IECCONFIG_H

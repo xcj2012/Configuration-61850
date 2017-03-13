@@ -1,0 +1,32 @@
+#ifndef MERGECOMPARE_H
+#define MERGECOMPARE_H
+
+#include <QDialog>
+#include "ui_mergecompare.h"
+#include<QMap>
+#include"datastruct.h"
+#include<QStandardItemModel>
+class MergeCompare : public QDialog
+{
+	Q_OBJECT
+
+public:
+	MergeCompare(QWidget *parent = 0);
+    QVector<IEDstruct> IED_List;
+    QMap<int,IEDstruct> IED_MAP;
+    QMap<QString,IEDstruct> Finil_MAP;
+    QStringList headerList;
+    QStandardItemModel   *Model;
+	QStringList RepearList;
+	~MergeCompare();
+    void Init_dlg();
+    void Display();
+private slots:
+    void Pushbutton_apply();
+    void Pushbutton_cancel();
+	void OnDataChanged(const QModelIndex & topLeft, const QModelIndex & bottomRight);
+private:
+	Ui::MergeCompare ui;
+};
+
+#endif // MERGECOMPARE_H

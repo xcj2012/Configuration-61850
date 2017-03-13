@@ -1,0 +1,10 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<xmldata name="">
+ <Config>
+   <module name="IED_GE_F650" type="1"/>
+   <module name="IED_GE_L30" type="2" />
+   <module name=" IED_GE_F35" type="3" />
+   <module name="IED_ABB_REF620" type="4"/>
+   <module name="IED_KEYVIA" type="5" />
+  </Config>
+</xmldata>

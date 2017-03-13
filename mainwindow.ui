@@ -1,0 +1,666 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1440</width>
+    <height>750</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QGridLayout" name="gridLayout_2">
+    <item row="0" column="0">
+     <widget class="QSplitter" name="splitter_3">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <widget class="QSplitter" name="splitter_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <widget class="QWidget" name="layoutWidget">
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <item>
+          <widget class="QTreeWidget" name="SCLTree">
+           <property name="contextMenuPolicy">
+            <enum>Qt::CustomContextMenu</enum>
+           </property>
+           <column>
+            <property name="text">
+             <string notr="true">1</string>
+            </property>
+           </column>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QSplitter" name="splitter">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <widget class="QWidget" name="layoutWidget">
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout">
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_2">
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_5">
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="1,3">
+                  <item>
+                   <widget class="QLabel" name="label_LD">
+                    <property name="text">
+                     <string>TextLabel</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QComboBox" name="comboBox_LD"/>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="1,3">
+                  <item>
+                   <widget class="QLabel" name="label_LN">
+                    <property name="text">
+                     <string>TextLabel</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QComboBox" name="comboBox_LN"/>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <widget class="DropTable" name="tableView">
+                <property name="contextMenuPolicy">
+                 <enum>Qt::CustomContextMenu</enum>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QTreeWidget" name="SubstationTree">
+              <property name="contextMenuPolicy">
+               <enum>Qt::CustomContextMenu</enum>
+              </property>
+              <column>
+               <property name="text">
+                <string notr="true">1</string>
+               </property>
+              </column>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_2">
+            <item>
+             <widget class="QPushButton" name="pushButton_Addres">
+              <property name="text">
+               <string>PushButton</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_GSE">
+              <property name="text">
+               <string>PushButton</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_SMV">
+              <property name="text">
+               <string>PushButton</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="Button_LogicDevice">
+              <property name="text">
+               <string>PushButton</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="Button_LogiceNode">
+              <property name="text">
+               <string>PushButton</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="Button_DataSet">
+              <property name="text">
+               <string>PushButton</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="Button_GSE">
+              <property name="text">
+               <string>PushButton</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="Button_SMV">
+              <property name="text">
+               <string>PushButton</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="Button_Input">
+              <property name="text">
+               <string>PushButton</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="Button_Report">
+              <property name="text">
+               <string>PushButton</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="Button_Log">
+              <property name="text">
+               <string>PushButton</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="Button_Add">
+              <property name="text">
+               <string>PushButton</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="Button_Del">
+              <property name="text">
+               <string>PushButton</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QTableView" name="tableView_data">
+         <property name="contextMenuPolicy">
+          <enum>Qt::CustomContextMenu</enum>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QFrame" name="frame">
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_3">
+         <item row="0" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_6">
+           <item>
+            <widget class="QLabel" name="label_LN_C">
+             <property name="minimumSize">
+              <size>
+               <width>70</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>70</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>TextLabel</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="lineEdit_LN"/>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="checkBox_DA">
+             <property name="text">
+              <string>CheckBox</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="1" column="0">
+          <layout class="QGridLayout" name="gridLayout">
+           <item row="0" column="0">
+            <layout class="QHBoxLayout" name="horizontalLayout_7">
+             <item>
+              <widget class="QLabel" name="label_DA">
+               <property name="minimumSize">
+                <size>
+                 <width>70</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>70</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>TextLabel</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="lineEdit_DA"/>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="checkBox_DA_END">
+               <property name="text">
+                <string>CheckBox</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="1" column="0">
+            <layout class="QHBoxLayout" name="horizontalLayout_8">
+             <item>
+              <widget class="QLabel" name="label_AP">
+               <property name="text">
+                <string>TextLabel</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="comboBox_AP">
+               <property name="focusPolicy">
+                <enum>Qt::NoFocus</enum>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_FC">
+               <property name="text">
+                <string>TextLabel</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="comboBox_FC"/>
+             </item>
+            </layout>
+           </item>
+           <item row="2" column="0">
+            <layout class="QHBoxLayout" name="horizontalLayout_9">
+             <item>
+              <widget class="QCheckBox" name="checkBox_Disp">
+               <property name="text">
+                <string>CheckBox</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_fresh">
+               <property name="text">
+                <string>PushButton</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="3" column="0">
+            <widget class="QTreeWidget" name="IEDTree">
+             <property name="contextMenuPolicy">
+              <enum>Qt::CustomContextMenu</enum>
+             </property>
+             <column>
+              <property name="text">
+               <string notr="true">1</string>
+              </property>
+             </column>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QTextBrowser" name="textBrowser">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>100</height>
+        </size>
+       </property>
+       <property name="contextMenuPolicy">
+        <enum>Qt::CustomContextMenu</enum>
+       </property>
+      </widget>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_Info">
+      <property name="text">
+       <string>TextLabel</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1440</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu_File">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionNew"/>
+    <addaction name="actionOpen"/>
+    <addaction name="actionSave"/>
+    <addaction name="actionSave_as"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menu_Function">
+    <property name="title">
+     <string>Function</string>
+    </property>
+    <addaction name="actionAuto_Set_MMS"/>
+    <addaction name="actionAuto_Set_GOOSE"/>
+    <addaction name="actionAuto_Set_SMV"/>
+    <addaction name="actionInit_Set_Communication"/>
+    <addaction name="actionAuto_Add_Control_block"/>
+    <addaction name="actionDel_All_Virtual_terminal_Map"/>
+    <addaction name="separator"/>
+   </widget>
+   <widget class="QMenu" name="menu_Import">
+    <property name="title">
+     <string>Import</string>
+    </property>
+    <addaction name="actionImport_CID"/>
+    <addaction name="actionImport_ICD"/>
+    <addaction name="actionImport_SSD"/>
+    <addaction name="actionImport_Map"/>
+    <addaction name="actionMerge_SCD"/>
+   </widget>
+   <widget class="QMenu" name="menu_Export">
+    <property name="title">
+     <string>Export</string>
+    </property>
+    <addaction name="actionExprot_CID"/>
+    <addaction name="actionExport_Virtual_terminal"/>
+    <addaction name="actionExport_Virtual_terminal_MAp"/>
+    <addaction name="actionExport_IEC_Conifig"/>
+    <addaction name="actionExport_MAP"/>
+   </widget>
+   <widget class="QMenu" name="menu_Config">
+    <property name="title">
+     <string>Config</string>
+    </property>
+    <addaction name="actionConfig"/>
+    <addaction name="actionSwtich_Chinese"/>
+    <addaction name="actionSwitch_English"/>
+   </widget>
+   <widget class="QMenu" name="menu_About">
+    <property name="title">
+     <string>About</string>
+    </property>
+    <addaction name="actionHelp"/>
+    <addaction name="actionAbout"/>
+   </widget>
+   <widget class="QMenu" name="menu_Check">
+    <property name="title">
+     <string>Check</string>
+    </property>
+    <addaction name="action_Communication_verification"/>
+    <addaction name="actionFile_integrity_check"/>
+    <addaction name="actionModel_validation_check"/>
+    <addaction name="actionModel_schema2_0_check"/>
+    <addaction name="actionCID"/>
+    <addaction name="action_terminals_Type_check"/>
+    <addaction name="actionThe_virtual_terminal_in_the_interval_contains_the_check"/>
+   </widget>
+   <addaction name="menu_File"/>
+   <addaction name="menu_Function"/>
+   <addaction name="menu_Check"/>
+   <addaction name="menu_Import"/>
+   <addaction name="menu_Export"/>
+   <addaction name="menu_Config"/>
+   <addaction name="menu_About"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionNew">
+   <property name="text">
+    <string>New</string>
+   </property>
+  </action>
+  <action name="actionOpen">
+   <property name="text">
+    <string>Open</string>
+   </property>
+  </action>
+  <action name="actionSave">
+   <property name="text">
+    <string>Save</string>
+   </property>
+  </action>
+  <action name="actionSave_as">
+   <property name="text">
+    <string>Save As</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionLoad_DB">
+   <property name="text">
+    <string>Load DB</string>
+   </property>
+  </action>
+  <action name="actionAuto_Set_MMS">
+   <property name="text">
+    <string>Auto Set MMS NET</string>
+   </property>
+   <property name="toolTip">
+    <string>Auto Set MMS net</string>
+   </property>
+  </action>
+  <action name="actionAuto_Set_GOOSE">
+   <property name="text">
+    <string>Auto Set GOOSE NET</string>
+   </property>
+   <property name="toolTip">
+    <string>Auto Set GOOSE net</string>
+   </property>
+  </action>
+  <action name="actionAuto_Set_SMV">
+   <property name="text">
+    <string>Auto Set SMV NET</string>
+   </property>
+   <property name="toolTip">
+    <string>Auto Set SMV net</string>
+   </property>
+  </action>
+  <action name="actionInit_Set_Communication">
+   <property name="text">
+    <string>Init Set Communication</string>
+   </property>
+  </action>
+  <action name="actionAuto_Add_Control_block">
+   <property name="text">
+    <string>Auto Add Control block</string>
+   </property>
+  </action>
+  <action name="actionDel_All_Virtual_terminal_Map">
+   <property name="text">
+    <string>Del All Virtual terminal Map</string>
+   </property>
+  </action>
+  <action name="action_Communication_verification">
+   <property name="text">
+    <string>Communication legitimacy verification</string>
+   </property>
+  </action>
+  <action name="actionFile_integrity_check">
+   <property name="text">
+    <string>File integrity check</string>
+   </property>
+  </action>
+  <action name="actionModel_validation_check">
+   <property name="text">
+    <string>Model validation check</string>
+   </property>
+  </action>
+  <action name="actionModel_schema2_0_check">
+   <property name="text">
+    <string>Model schema2.0 check</string>
+   </property>
+  </action>
+  <action name="actionCID">
+   <property name="text">
+    <string>CID File consistency check</string>
+   </property>
+  </action>
+  <action name="action_terminals_Type_check">
+   <property name="text">
+    <string>Virtual terminals on both sides of the matching check</string>
+   </property>
+  </action>
+  <action name="actionThe_virtual_terminal_in_the_interval_contains_the_check">
+   <property name="text">
+    <string>The virtual terminal in the interval contains the check.</string>
+   </property>
+  </action>
+  <action name="actionImport_CID">
+   <property name="text">
+    <string>Import CID</string>
+   </property>
+  </action>
+  <action name="actionImport_ICD">
+   <property name="text">
+    <string>Import ICD</string>
+   </property>
+  </action>
+  <action name="actionImport_SSD">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Import SSD</string>
+   </property>
+   <property name="visible">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="actionExprot_CID">
+   <property name="text">
+    <string>Exprot CID</string>
+   </property>
+  </action>
+  <action name="actionExport_Virtual_terminal">
+   <property name="text">
+    <string>Export Virtual terminal</string>
+   </property>
+  </action>
+  <action name="actionExport_Virtual_terminal_MAp">
+   <property name="text">
+    <string>Export Virtual terminal MAP</string>
+   </property>
+  </action>
+  <action name="actionExport_IEC_Conifig">
+   <property name="text">
+    <string>Export IEC Conifig</string>
+   </property>
+   <property name="toolTip">
+    <string>Export IEC Conifig</string>
+   </property>
+  </action>
+  <action name="actionExport_MAP">
+   <property name="text">
+    <string>Export MAP</string>
+   </property>
+  </action>
+  <action name="actionHelp">
+   <property name="text">
+    <string>Help</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
+  <action name="actionConfig">
+   <property name="text">
+    <string>Config</string>
+   </property>
+  </action>
+  <action name="actionImport_Map">
+   <property name="text">
+    <string>Import Map</string>
+   </property>
+  </action>
+  <action name="actionMerge_SCD">
+   <property name="text">
+    <string>Merge SCD</string>
+   </property>
+  </action>
+  <action name="actionSwtich_Chinese">
+   <property name="text">
+    <string>Swtich Chinese</string>
+   </property>
+  </action>
+  <action name="actionSwitch_English">
+   <property name="text">
+    <string>Switch English</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>DropTable</class>
+   <extends>QTableView</extends>
+   <header>droptable.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,5 @@
+﻿#ifndef GLOBALFUNHEARDER_H
+#define GLOBALFUNHEARDER_H
+#include <QString>
+extern QString globe_PrefixName;
+#endif // GLOBALFUNHEARDER_H

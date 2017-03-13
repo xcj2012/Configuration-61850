@@ -1,0 +1,39 @@
+#ifndef APPLYONEIED_H
+#define APPLYONEIED_H
+
+#include <QDialog>
+#include "datastruct.h"
+#include"XML.h"
+namespace Ui {
+class ApplyOneIED;
+}
+
+class ApplyOneIED : public QDialog
+{
+    Q_OBJECT
+
+public:
+    explicit ApplyOneIED(QWidget *parent = 0);
+	void Init_dlg(int sta);
+    void DisplayDevice(int sta);
+    void CreatOneIED();
+    int Check_IP(QString sIP);
+
+	int state;
+    XML *Point;
+    ~ApplyOneIED();
+public:
+    QVector<Device_Type>	DeviceType_List;
+    QStringList headerlist;
+    QStringList IEDlist;
+    RemoteAddress_Type RemoteAddres;
+    IED_IEC IED;
+    QString OldName;
+private slots:
+    void Pushbutton_apply();
+    void Pushbutton_cancel();
+private:
+    Ui::ApplyOneIED *ui;
+};
+
+#endif // APPLYONEIED_H

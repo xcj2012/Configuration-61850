@@ -1,0 +1,870 @@
+﻿#include"mainwindow.h"
+#include"ui_mainwindow.h"
+
+void MainWindow::Init_MMSNET()
+{
+	headerList.clear();
+	headerList << tr("IEDname") << tr("Access Point") << tr("IP") << tr("OSI-AP-Title") << tr("OSI-AE-Qualifier") << tr("OSI-PSEL") << tr("OSI-SSEL")
+		<< tr("OSI-TSEL");
+
+
+	//ui->tableView->setSelectionBehavior(QAbstractItemView::SelectRows);
+    //ui->tableView->setSelectionMode(QAbstractItemView::SingleSelection);
+	ui->tableView->setSelectionBehavior(QAbstractItemView::SelectItems);
+	ui->tableView->setSelectionMode(QAbstractItemView::ExtendedSelection);
+	m_ModelIED_MmsNet->clear();
+
+
+	disconnect(m_ModelIED_MmsNet, SIGNAL(dataChanged(const QModelIndex &, const QModelIndex &)), this, SLOT(OnMmsNetDataChanged(const QModelIndex &, const QModelIndex &)));
+	m_ModelIED_MmsNet->setColumnCount(headerList.count());
+
+	ui->tableView->setModel(m_ModelIED_MmsNet);
+	for (int i = 0; i < headerList.count(); i++)
+	{
+		m_ModelIED_MmsNet->setHeaderData(i, Qt::Horizontal, headerList.at(i));
+		ui->tableView->setItemDelegateForColumn(i, ui->tableView->itemDelegateForColumn(0));
+	}
+	IPEditer *IP_editor = new IPEditer(this);
+	ui->tableView->setItemDelegateForColumn(2, IP_editor);
+	connect(m_ModelIED_MmsNet, SIGNAL(dataChanged(const QModelIndex &, const QModelIndex &)), this, SLOT(OnMmsNetDataChanged(const QModelIndex &, const QModelIndex &)));
+    //ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+	ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Interactive);
+
+}
+void MainWindow::Init_GOOSENET()
+{
+	headerList.clear();
+	headerList << tr("IEDname") << tr("Access Point") << tr("cbName") << tr("LdInst") << tr("MAC-Address") << tr("APPID")
+		<< tr("VLAN-ID") << tr("VLAN-PRIORITY") << tr("MinTime") << tr("MaxTime");
+
+
+	ui->tableView->setSelectionBehavior(QAbstractItemView::SelectItems);
+	ui->tableView->setSelectionMode(QAbstractItemView::ExtendedSelection);
+
+	m_ModelIED_GooseNet->clear();
+
+
+	disconnect(m_ModelIED_GooseNet, SIGNAL(dataChanged(const QModelIndex &, const QModelIndex &)), this, SLOT(OnGooseNetDataChanged(const QModelIndex &, const QModelIndex &)));
+	m_ModelIED_GooseNet->setColumnCount(headerList.count());
+
+	ui->tableView->setModel(m_ModelIED_GooseNet);
+	for (int i = 0; i < headerList.count(); i++)
+	{
+		m_ModelIED_GooseNet->setHeaderData(i, Qt::Horizontal, headerList.at(i));
+		ui->tableView->setItemDelegateForColumn(i, ui->tableView->itemDelegateForColumn(0));
+	}
+	//MACEditer *Mac_editor = new MACEditer(this);
+	//ui->tableView->setItemDelegateForColumn(4, Mac_editor);
+	APPIDEditer *Appid_editor = new APPIDEditer(this);
+	ui->tableView->setItemDelegateForColumn(5, Appid_editor);
+	VLANEditer *Vlan_editor = new VLANEditer(this);
+	ui->tableView->setItemDelegateForColumn(6, Vlan_editor);
+	connect(m_ModelIED_GooseNet, SIGNAL(dataChanged(const QModelIndex &, const QModelIndex &)), this, SLOT(OnGooseNetDataChanged(const QModelIndex &, const QModelIndex &)));
+	ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Interactive);
+
+}
+void MainWindow::Init_SMVNET()
+{
+	headerList.clear();
+	headerList << tr("IEDname") << tr("Access Point") << tr("cbName") << tr("LdInst") << tr("MAC-Address") << tr("APPID")
+		<< tr("VLAN-ID") << tr("VLAN-PRIORITY");
+
+
+	ui->tableView->setSelectionBehavior(QAbstractItemView::SelectItems);
+    ui->tableView->setSelectionMode(QAbstractItemView::ExtendedSelection);
+
+	m_ModelIED_SmvNet->clear();
+
+
+	disconnect(m_ModelIED_SmvNet, SIGNAL(dataChanged(const QModelIndex &, const QModelIndex &)), this, SLOT(OnSmvNetDataChanged(const QModelIndex &, const QModelIndex &)));
+	m_ModelIED_SmvNet->setColumnCount(headerList.count());
+
+	ui->tableView->setModel(m_ModelIED_SmvNet);
+	for (int i = 0; i < headerList.count(); i++)
+	{
+		m_ModelIED_SmvNet->setHeaderData(i, Qt::Horizontal, headerList.at(i));
+		ui->tableView->setItemDelegateForColumn(i, ui->tableView->itemDelegateForColumn(0));
+	}
+	//MACEditer *Mac_editor = new MACEditer(this);
+	//ui->tableView->setItemDelegateForColumn(4, Mac_editor);
+	APPIDEditer *Appid_editor = new APPIDEditer(this);
+	ui->tableView->setItemDelegateForColumn(5, Appid_editor);
+	VLANEditer *Vlan_editor = new VLANEditer(this);
+	ui->tableView->setItemDelegateForColumn(6, Vlan_editor);
+
+	connect(m_ModelIED_SmvNet, SIGNAL(dataChanged(const QModelIndex &, const QModelIndex &)), this, SLOT(OnSmvNetDataChanged(const QModelIndex &, const QModelIndex &)));
+	ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Interactive);
+
+}
+
+
+
+void MainWindow::OnMmsNetDataChanged(const QModelIndex & topLeft, const QModelIndex & bottomRight)
+{
+	ConnectedAP m_data;
+	QString NodeName = CurrentItem->text(0);
+	m_data.iP_addr.s_IP = m_ModelIED_MmsNet->data(m_ModelIED_MmsNet->index(topLeft.row(), 2)).toString();
+	
+	if (topLeft.column()==2)
+	{
+		QString strIPAddr = m_data.iP_addr.s_IP;
+		bool bStatus;
+		if (strIPAddr.isEmpty())
+		{
+			DisplayMMSNet(NodeName);
+			return;
+		}
+
+		if (strIPAddr.count(".") != 3)
+		{
+			QMessageBox::about(0, tr("Error"), tr("Wrong IP Address"));
+			DisplayMMSNet(NodeName);
+			return;
+		}
+
+		QStringList listNum = strIPAddr.split(".", QString::SkipEmptyParts);
+		int bCount = listNum.count();
+
+		if (bCount != 4)
+		{
+			QMessageBox::about(0, tr("Error"), tr("Wrong IP Address"));
+			DisplayMMSNet(NodeName);
+			return;
+		}
+		bool bret;
+		for (int i = 0; i < bCount; i++)
+		{
+
+			int iNum;
+			iNum = listNum[i].toInt(&bret);
+			if ((i == 0)||(i==3))
+			{
+				if (iNum <= 0)
+				{
+					QMessageBox::about(0, tr("Error"), tr("Wrong IP Address"));
+					DisplayMMSNet(NodeName);
+					return;
+				}
+			}
+			if (!bret)
+			{
+				QMessageBox::about(0, tr("Error"), tr("Wrong IP Address"));
+				DisplayMMSNet(NodeName);
+				return;
+			}
+
+			if ((iNum >= 255))
+			{
+				QMessageBox::about(0, tr("Error"), tr("Wrong IP Address"));
+				DisplayMMSNet(NodeName);
+				return;
+			}
+		}
+		if ((listNum[0].toInt(&bret) == 1) && (listNum[1].toInt(&bret) == 1) && (listNum[2].toInt(&bret) == 1) && (listNum[3].toInt(&bret) == 1))
+		{
+			QMessageBox::about(0, tr("Error"), tr("Wrong IP Address"));
+			DisplayMMSNet(NodeName);
+			return;
+		}
+	}
+
+	QString iedName = m_ModelIED_MmsNet->data(m_ModelIED_MmsNet->index(topLeft.row(), 0)).toString();
+	m_data.iedName = iedName;
+    m_data.apName = m_ModelIED_MmsNet->data(m_ModelIED_MmsNet->index(topLeft.row(), 1)).toString();
+
+	m_data.iP_addr.s_AP_Title = m_ModelIED_MmsNet->data(m_ModelIED_MmsNet->index(topLeft.row(), 3)).toString();
+	if (topLeft.column() == 3)
+	{
+		for (int i = 0; i < m_data.iP_addr.s_AP_Title.length(); i++)
+		{
+			QChar chr;
+			chr = m_data.iP_addr.s_AP_Title.at(i);
+			if (i==0)
+			{
+				if (chr == ',')
+				{
+					QMessageBox::about(0, tr("Error"), tr("Wrong AP-Title\nIt should likes 1 3 9999 33 or 1,3,9999,33"));
+					DisplayMMSNet(NodeName);
+
+					return;
+				}
+			}
+			if (!chr.isNumber())
+			{
+				if (!chr.isSpace())
+				{
+					if (chr != ',')
+					{
+						QMessageBox::about(0, tr("Error"), tr("Wrong AP-Title\nIt should likes 1 3 9999 33 or 1,3,9999,33"));
+						DisplayMMSNet(NodeName);
+
+						return;
+					}
+				}
+			}
+		}
+	}
+
+	m_data.iP_addr.s_AE_Qualifier = m_ModelIED_MmsNet->data(m_ModelIED_MmsNet->index(topLeft.row(), 4)).toString();
+	if (topLeft.column() == 4)
+	{
+		for (int i = 0; i < m_data.iP_addr.s_AE_Qualifier.length(); i++)
+		{
+			QChar chr;
+			chr = m_data.iP_addr.s_AE_Qualifier.at(i);
+			if (!chr.isNumber())
+			{
+				QMessageBox::about(0, tr("Error"), tr("Wrong AP-Qualifier\n It should be likes 33"));
+				DisplayMMSNet(NodeName);
+
+				return;
+			}
+		}
+
+	}
+	m_data.iP_addr.s_PSEL = m_ModelIED_MmsNet->data(m_ModelIED_MmsNet->index(topLeft.row(), 5)).toString();
+	if (topLeft.column() == 5)
+	{
+		for (int i = 0; i < m_data.iP_addr.s_PSEL.length(); i++)
+		{
+			QChar chr;
+			chr = m_data.iP_addr.s_PSEL.at(i);
+			if (!chr.isNumber())
+			{
+				if (!chr.isSpace())
+				{
+
+					QMessageBox::about(0, tr("Error"), tr("Wrong OSI-PSEL\nIt should  likes 00 00 00 01"));
+					DisplayMMSNet(NodeName);
+
+					return;
+				}
+			}
+		}
+	}
+
+	m_data.iP_addr.s_SSEL = m_ModelIED_MmsNet->data(m_ModelIED_MmsNet->index(topLeft.row(), 6)).toString();
+	if (topLeft.column() == 6)
+	{
+		for (int i = 0; i < m_data.iP_addr.s_SSEL.length(); i++)
+		{
+			QChar chr;
+			chr = m_data.iP_addr.s_SSEL.at(i);
+			if (!chr.isNumber())
+			{
+				if (!chr.isSpace())
+				{
+
+					QMessageBox::about(0, tr("Error"), tr("Wrong OSI-SSEL\nIt should  likes  00 01"));
+					DisplayMMSNet(NodeName);
+
+					return;
+				}
+			}
+		}
+	}
+
+	m_data.iP_addr.s_TSEL = m_ModelIED_MmsNet->data(m_ModelIED_MmsNet->index(topLeft.row(), 7)).toString();
+	if (topLeft.column() == 7)
+	{
+		for (int i = 0; i < m_data.iP_addr.s_TSEL.length(); i++)
+		{
+			QChar chr;
+			chr = m_data.iP_addr.s_TSEL.at(i);
+			if (!chr.isNumber())
+			{
+				if (!chr.isSpace())
+				{
+
+					QMessageBox::about(0, tr("Error"), tr("Wrong OSI-TSEL\nIt should  likes  00 01"));
+					DisplayMMSNet(NodeName);
+
+					return;
+				}
+			}
+		}
+	}
+
+	m_SCDPoint->UpdateConnectAPMMS(iedName, m_data, MMSNETPARA_WITHOUT);
+    Reversion_Flag=1;
+	DisplayMMSNet(NodeName);
+
+}
+void MainWindow::OnGooseNetDataChanged(const QModelIndex & topLeft, const QModelIndex & bottomRight)
+{
+	ConnectedAP m_data;
+	bool OK;
+	QString str;
+    Address_GOOSE m_goose;
+	QString NodeName = CurrentItem->text(0);
+	QString iedName = m_ModelIED_GooseNet->data(m_ModelIED_GooseNet->index(topLeft.row(), 0)).toString();
+	m_data.iedName = m_ModelIED_GooseNet->data(m_ModelIED_GooseNet->index(topLeft.row(), 0)).toString();
+	m_data.apName = m_ModelIED_GooseNet->data(m_ModelIED_GooseNet->index(topLeft.row(), 1)).toString();
+    m_goose.s_cbName = m_ModelIED_GooseNet->data(m_ModelIED_GooseNet->index(topLeft.row(), 2)).toString();
+    m_goose.s_ldInst = m_ModelIED_GooseNet->data(m_ModelIED_GooseNet->index(topLeft.row(), 3)).toString();
+	str = m_ModelIED_GooseNet->data(m_ModelIED_GooseNet->index(topLeft.row(), 4)).toString();
+	if (topLeft.column()==4)
+	{
+		//str = m_goose.s_MAC_addr;
+		if ((str.isEmpty()))
+		{
+			QMessageBox::about(0, tr("Error"), tr("Wrong MAC Address\nMAC should be XX::XX::XX::XX::XX::XX,XX is between 00-FF"));
+			DisplayGOOSENet(NodeName);
+			return;
+		}
+
+		if (str.count("-") != 5)
+		{
+			QMessageBox::about(0, tr("Error"), tr("Wrong MAC Address\nMAC should be XX::XX::XX::XX::XX::XX,XX is between 00-FF"));
+			DisplayGOOSENet(NodeName);
+			return;
+		}
+		QStringList listNum = str.split("-", QString::SkipEmptyParts);
+		qint8 bCount = listNum.count();
+
+		if (bCount != 6)
+		{
+			QMessageBox::about(0, tr("Error"), tr("Wrong MAC Address\nMAC should be XX::XX::XX::XX::XX::XX,XX is between 00-FF"));
+			DisplayGOOSENet(NodeName);
+			return;
+		}
+		//if (listNum.at(5).length()<2)
+		//{
+		//	listNum[5] = "0" + listNum.at(5);
+		//}
+		for (int i = 0; i < bCount; i++)
+		{
+			bool bret;
+			int iNum;
+			iNum = listNum[i].toInt(&bret, 16);
+
+			if (!bret)
+			{
+				QMessageBox::about(0, tr("Error"), tr("Wrong MAC Address\nMAC should be XX::XX::XX::XX::XX::XX,XX is between 00-FF"));
+				DisplayGOOSENet(NodeName);
+				return;
+			}
+
+			if ((iNum > 0xFF))
+			{
+				QMessageBox::about(0, tr("Error"), tr("Wrong MAC Address\nMAC should be XX::XX::XX::XX::XX::XX,XX is between 00-FF"));
+				DisplayGOOSENet(NodeName);
+				return;
+			}
+		}
+		if (listNum.at(5).length()<2)
+		{
+			listNum[5] = "0" + listNum[5];
+		}
+		str.clear();
+		str = listNum.at(0);
+		for (int m = 1; m < listNum.size(); m++)
+		{
+			str += "-" + listNum.at(m);
+		}
+	}
+	
+	m_goose.s_MAC_addr = str;
+    m_goose.s_APPID = m_ModelIED_GooseNet->data(m_ModelIED_GooseNet->index(topLeft.row(), 5)).toString();
+	if (topLeft.column()==5)
+	{
+		if (m_goose.s_APPID.length()<4)
+		{
+			int i = 4 - m_goose.s_APPID.length();
+			for (int j = 0; j<i; j++)
+			{
+				m_goose.s_APPID = "0" + m_goose.s_APPID;
+			}
+		}
+		if ((0x3FFF < m_goose.s_APPID.toUInt(&OK, 16)) || (0x0000 > m_goose.s_APPID.toUInt(&OK, 16)))
+		{
+			QMessageBox::about(0, tr("Error"), tr("APPID of GOOSE must be between 0000-3FFF"));
+			DisplayGOOSENet(NodeName);
+			return;
+		}
+	}
+
+    m_goose.s_VLAN_ID = m_ModelIED_GooseNet->data(m_ModelIED_GooseNet->index(topLeft.row(), 6)).toString();
+	if (topLeft.column()==6)
+	{
+		if (m_goose.s_VLAN_ID.length()<3)
+		{
+			int i = 3 - m_goose.s_VLAN_ID.length();
+			for (int j = 0; j<i; j++)
+			{
+				m_goose.s_VLAN_ID = "0" + m_goose.s_VLAN_ID;
+			}
+		}
+		if ((0xFFF < m_goose.s_VLAN_ID.toUInt(&OK, 16)))
+		{
+			QMessageBox::about(0, tr("Error"), tr("VLAN ID  must be between 000-FFF"));
+			DisplayGOOSENet(NodeName);
+			return;
+		}
+	}
+
+    m_goose.s_VLAN_PRIORITY = m_ModelIED_GooseNet->data(m_ModelIED_GooseNet->index(topLeft.row(), 7)).toString();
+	if (topLeft.column() == 7)
+	{
+		for (int i = 0; i < m_goose.s_VLAN_PRIORITY.length(); i++)
+		{
+			QChar chr;
+			chr = m_goose.s_VLAN_PRIORITY.at(i);
+			if (!chr.isNumber())
+			{
+				QMessageBox::about(0, tr("Error"), tr("The VLAN-PRIORITY only can be number"));
+				DisplayGOOSENet(NodeName);
+
+				return;
+			}
+		}
+	}
+	m_goose.s_MinTime = m_ModelIED_GooseNet->data(m_ModelIED_GooseNet->index(topLeft.row(), 8)).toString();
+    m_goose.s_MaxTime = m_ModelIED_GooseNet->data(m_ModelIED_GooseNet->index(topLeft.row(), 9)).toString();
+    m_data.Goose_addr=m_goose;
+    m_SCDPoint->UpdateConnectAPGOOSE(iedName, m_data);
+    Reversion_Flag=1;
+	DisplayGOOSENet(NodeName);
+}
+void MainWindow::OnSmvNetDataChanged(const QModelIndex & topLeft, const QModelIndex & bottomRight)
+{
+	bool OK;
+	ConnectedAP m_data;
+    Address_SMV m_smv;
+	QString str;
+	QString NodeName = CurrentItem->text(0);
+	QString iedName = m_ModelIED_SmvNet->data(m_ModelIED_SmvNet->index(topLeft.row(), 0)).toString();
+	m_data.iedName = m_ModelIED_SmvNet->data(m_ModelIED_SmvNet->index(topLeft.row(), 0)).toString();
+	m_data.apName = m_ModelIED_SmvNet->data(m_ModelIED_SmvNet->index(topLeft.row(), 1)).toString();
+    m_smv.s_cbName = m_ModelIED_SmvNet->data(m_ModelIED_SmvNet->index(topLeft.row(), 2)).toString();
+    m_smv.s_ldInst = m_ModelIED_SmvNet->data(m_ModelIED_SmvNet->index(topLeft.row(), 3)).toString();
+    //m_smv.s_MAC_addr = m_ModelIED_SmvNet->data(m_ModelIED_SmvNet->index(topLeft.row(), 4)).toString();
+	str = m_ModelIED_SmvNet->data(m_ModelIED_SmvNet->index(topLeft.row(), 4)).toString();
+	if (topLeft.column()==4)
+	{
+		if ((str.isEmpty()))
+		{
+			QMessageBox::about(0, tr("Error"), tr("Wrong MAC Address\nMAC should be XX::XX::XX::XX::XX::XX,XX is between 00-FF"));
+			DisplaySMVNet(NodeName);
+			return;
+		}
+
+		if (str.count("-") != 5)
+		{
+			QMessageBox::about(0, tr("Error"), tr("Wrong MAC Address\nMAC should be XX::XX::XX::XX::XX::XX,XX is between 00-FF"));
+			DisplaySMVNet(NodeName);
+			return;
+		}
+		QStringList listNum = str.split("-", QString::SkipEmptyParts);
+		qint8 bCount = listNum.count();
+
+		if (bCount != 6)
+		{
+			QMessageBox::about(0, tr("Error"), tr("Wrong MAC Address\nMAC should be XX::XX::XX::XX::XX::XX,XX is between 00-FF"));
+			DisplaySMVNet(NodeName);
+			return;
+		}
+
+		for (int i = 0; i < bCount; i++)
+		{
+			bool bret;
+			int iNum;
+			iNum = listNum[i].toInt(&bret, 16);
+
+			if (!bret)
+			{
+				QMessageBox::about(0, tr("Error"), tr("Wrong MAC Address\nMAC should be XX::XX::XX::XX::XX::XX,XX is between 00-FF"));
+				DisplaySMVNet(NodeName);
+				return;
+			}
+
+			if ((iNum > 0xFF))
+			{
+				QMessageBox::about(0, tr("Error"), tr("Wrong MAC Address\nMAC should be XX::XX::XX::XX::XX::XX,XX is between 00-FF"));
+				DisplaySMVNet(NodeName);
+				return;
+			}
+		}
+		if (listNum.at(5).length()<2)
+		{
+			listNum[5] = "0" + listNum[5];
+		}
+		str.clear();
+		str = listNum.at(0);
+		for (int m = 1; m < listNum.size(); m++)
+		{
+			str += "-" + listNum.at(m);
+		}
+	}
+
+	m_smv.s_MAC_addr = str;
+    m_smv.s_APPID = m_ModelIED_SmvNet->data(m_ModelIED_SmvNet->index(topLeft.row(), 5)).toString();
+	if (topLeft.column()==5)
+	{
+		if (m_smv.s_APPID.length()<4)
+		{
+			int i = 4 - m_smv.s_APPID.length();
+			for (int j = 0; j<i; j++)
+			{
+				m_smv.s_APPID = "0" + m_smv.s_APPID;
+			}
+		}
+		if ((0x3FFF>m_smv.s_APPID.toUInt(&OK, 16)) || (0xFFFF<m_smv.s_APPID.toUInt(&OK, 16)))
+		{
+            QMessageBox::about(0, tr("Error"), tr("APPID of SMV must be between 4000-7FFF"));
+			DisplaySMVNet(NodeName);
+			return;
+
+		}
+	}
+
+    m_smv.s_VLAN_ID = m_ModelIED_SmvNet->data(m_ModelIED_SmvNet->index(topLeft.row(), 6)).toString();
+	if (topLeft.column()==6)
+	{
+		if (m_smv.s_VLAN_ID.length()<3)
+		{
+			int i = 3 - m_smv.s_VLAN_ID.length();
+			for (int j = 0; j<i; j++)
+			{
+				m_smv.s_VLAN_ID = "0" + m_smv.s_VLAN_ID;
+			}
+		}
+		if ((0xFFF < m_smv.s_VLAN_ID.toUInt(&OK, 16)))
+		{
+			QMessageBox::about(0, tr("Error"), tr("VLAN ID  must be between 000-FFF"));
+			DisplaySMVNet(NodeName);
+			return;
+		}
+	}
+
+    m_smv.s_VLAN_PRIORITY = m_ModelIED_SmvNet->data(m_ModelIED_SmvNet->index(topLeft.row(), 7)).toString();
+	if (topLeft.column()==7)
+	{
+		for (int i = 0; i < m_smv.s_VLAN_PRIORITY.length(); i++)
+		{
+			QChar chr;
+			chr = m_smv.s_VLAN_PRIORITY.at(i);
+			if (!chr.isNumber())
+			{
+					QMessageBox::about(0, tr("Error"), tr("The VLAN-PRIORITY only can be number"));
+					DisplaySMVNet(NodeName);
+
+					return;
+			}
+		}
+	}
+	m_data.SMV_addr=m_smv;
+    m_SCDPoint->UpdateConnectAPSMV(iedName, m_data);
+    Reversion_Flag=1;
+	DisplaySMVNet(NodeName);
+}
+void MainWindow::DisplayMMSNet(QString str)
+{
+	QVector<ConnectedAP> connectAPList;
+	m_ModelIED_MmsNet->setRowCount(0);
+	m_SCDPoint->GetConnectAPList(str, connectAPList);
+	AddMMSNetToTable(connectAPList);
+}
+
+void MainWindow::DisplayGOOSENet(QString str)
+{
+	QVector<ConnectedAP> connectAPList;
+	m_ModelIED_GooseNet->setRowCount(0);
+	m_SCDPoint->GetConnectAPList(str, connectAPList);
+	AddGOOSNetEToTable(connectAPList);
+}
+
+void MainWindow::DisplaySMVNet(QString str)
+{
+	QVector<ConnectedAP> connectAPList;
+
+	m_ModelIED_SmvNet->setRowCount(0);
+	m_SCDPoint->GetConnectAPList(str, connectAPList);
+	AddSMVNetToTable(connectAPList);
+}
+
+void MainWindow::AddMMSNetToTable(QVector<ConnectedAP>&List)
+{
+	disconnect(m_ModelIED_MmsNet, SIGNAL(dataChanged(const QModelIndex &, const QModelIndex &)), this, SLOT(OnMmsNetDataChanged(const QModelIndex &, const QModelIndex &)));
+	ConnectAP_MAP.clear();
+	for (int i = 0; i < List.size(); i++)
+	{
+		m_ModelIED_MmsNet->setRowCount(i + 1);
+		ConnectAP_MAP.insert(List[i].iedName, List[i]);
+		m_ModelIED_MmsNet->setData(m_ModelIED_MmsNet->index(i, 0), List[i].iedName);
+		m_ModelIED_MmsNet->item(i, 0)->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+
+		m_ModelIED_MmsNet->setData(m_ModelIED_MmsNet->index(i, 1), List[i].apName);
+		m_ModelIED_MmsNet->item(i, 1)->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+		m_ModelIED_MmsNet->setData(m_ModelIED_MmsNet->index(i, 3), List[i].iP_addr.s_AP_Title);
+		m_ModelIED_MmsNet->setData(m_ModelIED_MmsNet->index(i, 4), List[i].iP_addr.s_AE_Qualifier);
+		m_ModelIED_MmsNet->setData(m_ModelIED_MmsNet->index(i, 5), List[i].iP_addr.s_PSEL);
+		m_ModelIED_MmsNet->setData(m_ModelIED_MmsNet->index(i, 6), List[i].iP_addr.s_SSEL);
+		m_ModelIED_MmsNet->setData(m_ModelIED_MmsNet->index(i, 7), List[i].iP_addr.s_TSEL);
+		m_ModelIED_MmsNet->setData(m_ModelIED_MmsNet->index(i, 2), List[i].iP_addr.s_IP);
+	}
+	connect(m_ModelIED_MmsNet, SIGNAL(dataChanged(const QModelIndex &, const QModelIndex &)), this, SLOT(OnMmsNetDataChanged(const QModelIndex &, const QModelIndex &)));
+
+}
+
+void MainWindow::AddGOOSNetEToTable(QVector<ConnectedAP>&List)
+{
+	disconnect(m_ModelIED_GooseNet, SIGNAL(dataChanged(const QModelIndex &, const QModelIndex &)), this, SLOT(OnGooseNetDataChanged(const QModelIndex &, const QModelIndex &)));
+	ConnectAP_MAP.clear();
+	for (int i = 0; i < List.size(); i++)
+	{
+		m_ModelIED_GooseNet->setRowCount(i + 1);
+		ConnectAP_MAP.insert(List[i].iedName, List[i]);
+		m_ModelIED_GooseNet->setData(m_ModelIED_GooseNet->index(i, 0), List[i].iedName);
+		m_ModelIED_GooseNet->item(i, 0)->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+
+		m_ModelIED_GooseNet->setData(m_ModelIED_GooseNet->index(i, 1), List[i].apName);
+		m_ModelIED_GooseNet->item(i, 1)->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+		m_ModelIED_GooseNet->setData(m_ModelIED_GooseNet->index(i, 2), List[i].Goose_addr.s_cbName);
+		m_ModelIED_GooseNet->item(i, 2)->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+		m_ModelIED_GooseNet->setData(m_ModelIED_GooseNet->index(i, 3), List[i].Goose_addr.s_ldInst);
+		m_ModelIED_GooseNet->item(i, 3)->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+		m_ModelIED_GooseNet->setData(m_ModelIED_GooseNet->index(i, 4), List[i].Goose_addr.s_MAC_addr);
+		m_ModelIED_GooseNet->setData(m_ModelIED_GooseNet->index(i, 5), List[i].Goose_addr.s_APPID);
+		m_ModelIED_GooseNet->setData(m_ModelIED_GooseNet->index(i, 6), List[i].Goose_addr.s_VLAN_ID);
+		m_ModelIED_GooseNet->setData(m_ModelIED_GooseNet->index(i, 7), List[i].Goose_addr.s_VLAN_PRIORITY);
+		m_ModelIED_GooseNet->setData(m_ModelIED_GooseNet->index(i, 8), List[i].Goose_addr.s_MinTime);
+		m_ModelIED_GooseNet->setData(m_ModelIED_GooseNet->index(i, 9), List[i].Goose_addr.s_MaxTime);
+	}
+	connect(m_ModelIED_GooseNet, SIGNAL(dataChanged(const QModelIndex &, const QModelIndex &)), this, SLOT(OnGooseNetDataChanged(const QModelIndex &, const QModelIndex &)));
+
+}
+
+void MainWindow::AddSMVNetToTable(QVector<ConnectedAP>&List)
+{
+	disconnect(m_ModelIED_SmvNet, SIGNAL(dataChanged(const QModelIndex &, const QModelIndex &)), this, SLOT(OnSmvNetDataChanged(const QModelIndex &, const QModelIndex &)));
+	ConnectAP_MAP.clear();
+
+	for (int i = 0; i < List.size(); i++)
+	{
+
+		m_ModelIED_SmvNet->setRowCount(i + 1);
+		ConnectAP_MAP.insert(List[i].iedName, List[i]);
+		m_ModelIED_SmvNet->setData(m_ModelIED_SmvNet->index(i, 0), List[i].iedName);
+		m_ModelIED_SmvNet->item(i, 0)->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+
+		m_ModelIED_SmvNet->setData(m_ModelIED_SmvNet->index(i, 1), List[i].apName);
+		m_ModelIED_SmvNet->item(i, 1)->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+		m_ModelIED_SmvNet->setData(m_ModelIED_SmvNet->index(i, 2), List[i].SMV_addr.s_cbName);
+		m_ModelIED_SmvNet->item(i, 2)->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+		m_ModelIED_SmvNet->setData(m_ModelIED_SmvNet->index(i, 3), List[i].SMV_addr.s_ldInst);
+		m_ModelIED_SmvNet->item(i, 3)->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+		m_ModelIED_SmvNet->setData(m_ModelIED_SmvNet->index(i, 4), List[i].SMV_addr.s_MAC_addr);
+		m_ModelIED_SmvNet->setData(m_ModelIED_SmvNet->index(i, 5), List[i].SMV_addr.s_APPID);
+		m_ModelIED_SmvNet->setData(m_ModelIED_SmvNet->index(i, 6), List[i].SMV_addr.s_VLAN_ID);
+		m_ModelIED_SmvNet->setData(m_ModelIED_SmvNet->index(i, 7), List[i].SMV_addr.s_VLAN_PRIORITY);
+	}
+	connect(m_ModelIED_SmvNet, SIGNAL(dataChanged(const QModelIndex &, const QModelIndex &)), this, SLOT(OnSmvNetDataChanged(const QModelIndex &, const QModelIndex &)));
+
+}
+void MainWindow::OnMMSClicked(const QModelIndex & index)
+{
+	ui->tableView->selectRow(index.row());
+}
+void MainWindow::OnHorizontalHeaderClicked(const QModelIndex & index)
+{
+	return;
+}
+void MainWindow::Action_Extra()
+{
+	m_ModelSlection = ui->tableView->selectionModel();
+
+	QModelIndexList indexes;
+	indexes.clear();
+	indexes = m_ModelSlection->selectedRows();
+	QModelIndex index;
+	index = indexes[0];
+	QString iedName = m_ModelIED_MmsNet->data(m_ModelIED_MmsNet->index(index.row(), 0)).toString();
+    QString ApName = m_ModelIED_MmsNet->data(m_ModelIED_MmsNet->index(index.row(), 1)).toString();
+
+    MMSExtra m_dlg;
+    m_dlg.m_Point = m_SCDPoint;
+    m_dlg.m_IED =iedName;
+    m_dlg.m_AP = ApName;
+    m_dlg.Get_Data();
+	m_dlg.Dispplay();
+
+	if (m_dlg.exec()==QDialog::Accepted)
+	{
+        //ConnectedAP m_data = m_dlg.ConnectAP;
+        //m_SCDPoint->UpdateConnectAPMMS(m_data.iedName, m_data, MMSNETPARA_WITH);
+		
+        //DisplayMMSNet(CurrentItem->text(0));
+	}
+    DisplayMMSNet(CurrentItem->text(0));
+}
+void MainWindow::Action_Increase()
+{
+    m_ModelSlection = ui->tableView->selectionModel();
+    ConnectedAP m_data;
+    QString str;
+    QModelIndexList indexes;
+    QModelIndex index;
+    indexes.clear();
+    indexes = m_ModelSlection->selectedIndexes();
+    if(ChildNodeType==NODE_MMSNET)
+    {
+		if (indexes[0].column()!=2)
+		{
+			return;
+		}
+        str =m_ModelIED_MmsNet->data(indexes[0]).toString();
+		for (int i = 0; i < indexes.size(); i++)
+		{
+            Reversion_Flag=1;
+			m_ModelIED_MmsNet->setData(indexes[i], IP_Increase(str, i));
+		}
+    }
+    if(ChildNodeType==NODE_GOOSENET)
+    {
+        if ((indexes[0].column() != 4)&&(indexes[0].column() != 5))
+		{
+			return;
+		}
+        if(indexes[0].column()==4)
+        {
+           
+            str =m_ModelIED_GooseNet->data(indexes[0]).toString();
+            for (int i = 0; i < indexes.size(); i++)
+            {
+                Reversion_Flag=1;
+				m_ModelIED_GooseNet->setData(indexes[i], MAC_Increase(str, i));
+                
+
+            }
+        }else if(indexes[0].column()==5)
+        {
+			bool ret;
+            str =m_ModelIED_GooseNet->data(indexes[0]).toString();
+			int num = str.toUInt(&ret, 16);
+			if ((0x3FFF <num) || (0x0000 >num))
+			{
+				QMessageBox::about(0, tr("Error"), tr("APPID of GOOSE must be between 0000-3FFF"));
+				return;
+
+			}
+            for (int i = 0; i < indexes.size(); i++)
+            {
+                Reversion_Flag=1;
+				int strHex = num + i;
+				m_ModelIED_GooseNet->setData(indexes[i], QString::number(strHex, 16).toUpper());
+            }
+        }
+
+    }
+    if(ChildNodeType==NODE_SMVNET)
+    {
+        if ((indexes[0].column() != 4)&&(indexes[0].column() != 5))
+		{
+			return;
+		}
+        if(indexes[0].column() == 4)
+        {
+
+         str =m_ModelIED_SmvNet->data(indexes[0]).toString();
+		 for (int i = 0; i < indexes.size(); i++)
+		 {
+             Reversion_Flag=1;
+			 m_ModelIED_SmvNet->setData(indexes[i], MAC_Increase(str, i));
+
+		 }
+        }else if(indexes[0].column() == 5)
+        {
+			bool ret;
+            str =m_ModelIED_SmvNet->data(indexes[0]).toString();
+			int num = str.toUInt(&ret, 16);
+			if ((0x3FFF > num) || (0xFFFF < num))
+			{
+                QMessageBox::about(0, tr("Error"), tr("APPID of SMV must be between 4000-7FFF"));
+				return;
+
+			}
+            for (int i = 0; i < indexes.size(); i++)
+            {
+				int strHex =num + i;
+                Reversion_Flag=1;
+                m_ModelIED_SmvNet->setData(indexes[i],QString::number(strHex,16).toUpper());
+
+            }
+        }
+    }
+
+
+
+}
+void MainWindow::Action_Batch()
+{
+    m_ModelSlection = ui->tableView->selectionModel();
+    ConnectedAP m_data;
+    QString str;
+    QModelIndexList indexes;
+    QModelIndex index;
+    indexes.clear();
+    indexes = m_ModelSlection->selectedIndexes();
+    if(ChildNodeType==NODE_MMSNET)
+    {
+        str =m_ModelIED_MmsNet->data(indexes[0]).toString();
+        foreach (index, indexes)
+        {
+            Reversion_Flag=1;
+        m_ModelIED_MmsNet->setData(index,str);
+        }
+    }
+    if(ChildNodeType==NODE_GOOSENET)
+    {
+        str =m_ModelIED_GooseNet->data(indexes[0]).toString();
+        foreach (index, indexes)
+        {
+            Reversion_Flag=1;
+            m_ModelIED_GooseNet->setData(index,str);
+        }
+    }
+    if(ChildNodeType==NODE_SMVNET)
+    {
+         str =m_ModelIED_SmvNet->data(indexes[0]).toString();
+         foreach (index, indexes)
+         {
+             Reversion_Flag=1;
+            m_ModelIED_SmvNet->setData(index,str);
+         }
+    }
+
+}
+void MainWindow::Auto_SetMmsNet()
+{
+    Reversion_Flag=1;
+	m_SCDPoint->AutoSet_MMS();
+}
+void MainWindow::Auto_SetGooseNet()
+{
+    Reversion_Flag=1;
+	m_SCDPoint->AutoSet_GOOSE();
+}
+void MainWindow::Auto_SetSmvNet()
+{
+    Reversion_Flag=1;
+	m_SCDPoint->AutoSet_SMV();
+}
+void MainWindow::Auto_Init_Communication()
+{
+    Reversion_Flag=1;
+	if (CurrentNodeType == SUBNET_NODE)
+	{
+		if (ChildNodeType == NODE_MMSNET)
+		{
+
+		}
+		if (ChildNodeType == NODE_GOOSENET)
+		{
+		}
+		if (ChildNodeType == NODE_SMVNET)
+		{
+		}
+	}
+}
+

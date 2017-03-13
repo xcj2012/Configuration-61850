@@ -1,0 +1,70 @@
+#pragma once
+#include"qstring.h"
+#include"tinyxml.h"
+#include"tinystr.h"
+#include"tinyxml_global.h"
+#include"datastruct.h"
+#include <QDateTime>
+#include <QDir>
+#include <QMap>
+#define YX_TYPE 1
+#define YC_TYPE 2
+#define KWH_TYPE 3
+#define YK_TYPE 4
+#define SG_TYPE 5
+class XML
+{
+public:
+	XML();
+
+	~XML();
+        int LoadXML(QString filename,int state);
+		int CreatXML(int state);
+		int InitXMLstruct(TiXmlDocument*, int state);
+        int SaveXML(QString filename);
+        int UpdataStationPara(StationPara_struct&);
+        int GetStationPara(StationPara_struct&,int state);
+		int CreatOneIED(QString IEDName, QString Ventor, QString Type, QString Addr);
+		int DelOneIED(QString Addr);
+		int FindOneIED(QString Addr);
+        int GetOneIED(Model_XML&,QString no);
+        int UpdataOneIED(Model_XML&,int type);
+        void GetBIList(TiXmlElement*,QVector<BI_struct>&);
+        void GetAIList(TiXmlElement*,QVector<AI_struct>&);
+        void GetCIList(TiXmlElement*,QVector<CI_struct>&);
+        void GetBOList(TiXmlElement*,QVector<BO_struct>&);
+        void GetSGList(TiXmlElement*,QVector<SG_struct>&);
+        void UpdataBIList(TiXmlElement*,QVector<BI_struct>&);
+        void UpdataAIList(TiXmlElement*,QVector<AI_struct>&);
+        void UpdataCIList(TiXmlElement*,QVector<CI_struct>&);
+        void UpdataBOList(TiXmlElement*,QVector<BO_struct>&);
+        void UpdataSGList(TiXmlElement*,QVector<SG_struct>&);
+		void GetDeviceTypeList(QVector<Device_Type>&);
+		TiXmlElement* CreatClient();
+		int CreatIED(IED_IEC&);
+		TiXmlElement* CreatMMS();
+		TiXmlElement* CreatNetwork();
+		TiXmlElement* CreatTransport();
+		TiXmlElement* CreatNetworkAddressing();
+		int CreatRemoteAddres(RemoteAddress_Type&);
+		int UpdateRemote(QString OldName, IED_IEC&, RemoteAddress_Type&);
+		int UpdateIED(QString OldName, IED_IEC&);
+        int UpdateAddres(QString OldName, RemoteAddress_Type&);
+        int CreatOneRemote(IED_IEC&, RemoteAddress_Type&);
+        int CheckName(QString Name);
+		int GetDeviceList(QVector< IED_IEC>& IEDList, QVector< RemoteAddress_Type>&RemoteList);
+		int DelOneRemote(QString IEDName);
+		int GetTimeService(TimeServer&);
+		int UpdateTimeService(TimeServer&);
+		void Init_Map();
+        void DelOneItem(QString ied,QString index,int state);
+    private:
+        TiXmlElement* root;
+        TiXmlDocument* doc;
+		QMap<QString, TiXmlElement*> AI_MAP;
+		QMap<QString, TiXmlElement*> BI_MAP;
+		QMap<QString, TiXmlElement*> CI_MAP;
+		QMap<QString, TiXmlElement*> BO_MAP;
+		QMap<QString, TiXmlElement*> SG_MAP;
+};
+

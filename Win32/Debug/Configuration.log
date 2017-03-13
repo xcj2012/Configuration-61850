@@ -1,0 +1,87 @@
+﻿生成启动时间为 2017/3/10 15:21:55。
+     1>项目“D:\Qt\Project\Configuration V1.2\Configuration.vcxproj”在节点 2 上(Build 个目标)。
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_adddatesetdlg.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_adddatesetdlg.cpp, Release\moc_adddatesetdlg.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_applyoneied.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_applyoneied.cpp, Release\moc_applyoneied.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_batchimportcid.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_batchimportcid.cpp, Release\moc_batchimportcid.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_comm_check.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_comm_check.cpp, Release\moc_comm_check.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_compareied.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_compareied.cpp, Release\moc_compareied.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_datadescchange.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_datadescchange.cpp, Release\moc_datadescchange.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_datatemplate.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_datatemplate.cpp, Release\moc_datatemplate.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_droptable.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_droptable.cpp, Release\moc_droptable.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_exportcid.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_exportcid.cpp, Release\moc_exportcid.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_iecconfig.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_iecconfig.cpp, Release\moc_iecconfig.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_importoneied.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_importoneied.cpp, Release\moc_importoneied.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_importxls.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_importxls.cpp, Release\moc_importxls.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_importxls_rs.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_importxls_rs.cpp, Release\moc_importxls_rs.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_inputdialog.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_inputdialog.cpp, Release\moc_inputdialog.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_legitimacyverification.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_legitimacyverification.cpp, Release\moc_legitimacyverification.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_logicmap.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_logicmap.cpp, Release\moc_logicmap.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_mainwindow.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_mainwindow.cpp, Release\moc_mainwindow.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_mergecompare.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_mergecompare.cpp, Release\moc_mergecompare.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_mergescd.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_mergescd.cpp, Release\moc_mergescd.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_mmsextra.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_mmsextra.cpp, Release\moc_mmsextra.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_reload.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_reload.cpp, Release\moc_reload.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_rptchange.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_rptchange.cpp, Release\moc_rptchange.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_stationpara.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_stationpara.cpp, Release\moc_stationpara.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_terminaltypecheck.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_terminaltypecheck.cpp, Release\moc_terminaltypecheck.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_timeservice.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_timeservice.cpp, Release\moc_timeservice.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_userdefinedelegate.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_userdefinedelegate.cpp, Release\moc_userdefinedelegate.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_wait_dlg.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_wait_dlg.cpp, Release\moc_wait_dlg.cpp.
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I. /IC:\Qt\Qt5.6.1\5.6\msvc2013\include /IC:\Qt\Qt5.6.1\5.6\msvc2013\include\QtWidgets /IC:\Qt\Qt5.6.1\5.6\msvc2013\include\QtGui /IC:\Qt\Qt5.6.1\5.6\msvc2013\include\QtANGLE /IC:\Qt\Qt5.6.1\5.6\msvc2013\include\QtCore /Idebug /IC:\Qt\Qt5.6.1\5.6\msvc2013\include\QtXml /IC:\Qt\Qt5.6.1\5.6\msvc2013\include\QtXmlPatterns /I"C:\Qt\Qt5.6.1\5.6\msvc2013\mkspecs\win32-msvc2013" /I.\GeneratedFiles /ID:\Qt\Project\Configuration\xercesc /IC:\Qt\Qt5.6.1\5.6\msvc2013\include\QtSql /IC:\Qt\Qt5.6.1\5.6\msvc2013\include\ActiveQt /IC:\Qt\Qt5.6.1\5.6\msvc2013\include\QtScript /ID:\Qt\Project\Configuration\include_cpp /Zi /nologo /W3 /WX- /Od /Oy- /D _WINDOWS /D UNICODE /D WIN32 /D QT_PLUGIN /D QT_WIDGETS_LIB /D QT_GUI_LIB /D QT_CORE_LIB /D QT_SQL_LIB /D QT_SCRIPT_LIB /D _USING_V110_SDK71_ /Gm- /EHsc /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo"Win32\Debug\\" /Fd"Win32\Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt -w34100 -w34189 -w44996 adddatesetdlg.cpp Debug\moc_importxls_rs.cpp importxls.cpp mainwindowcheck.cpp mainwindowcomm.cpp mainwindowsubnet.cpp SAX2FilterHandlers.cpp SAX2PrintHandlers.cpp scdtree.cpp
+         adddatesetdlg.cpp
+         moc_importxls_rs.cpp
+         importxls.cpp
+         mainwindowcheck.cpp
+     1>D:\Qt\Project\Configuration V1.2\xercesc/util/Xerces_autoconf_config.hpp(101): error C2146: 语法错误: 缺少“;”(在标识符“XMLSSize_t”的前面)
+     1>D:\Qt\Project\Configuration V1.2\xercesc/util/Xerces_autoconf_config.hpp(101): error C4430: 缺少类型说明符 - 假定为 int。注意:  C++ 不支持默认 int
+         mainwindowcomm.cpp
+     1>mainwindowcomm.cpp(20): warning C4100: “index”: 未引用的形参
+     1>mainwindowcomm.cpp(124): warning C4100: “bottomRight”: 未引用的形参
+     1>mainwindowcomm.cpp(124): warning C4100: “topLeft”: 未引用的形参
+         mainwindowsubnet.cpp
+     1>mainwindowsubnet.cpp(102): warning C4100: “bottomRight”: 未引用的形参
+     1>mainwindowsubnet.cpp(111): warning C4101: “bStatus”: 未引用的局部变量
+     1>mainwindowsubnet.cpp(293): warning C4100: “bottomRight”: 未引用的形参
+     1>mainwindowsubnet.cpp(429): warning C4100: “bottomRight”: 未引用的形参
+     1>mainwindowsubnet.cpp(669): warning C4100: “index”: 未引用的形参
+         SAX2FilterHandlers.cpp
+     1>D:\Qt\Project\Configuration V1.2\xercesc/util/Xerces_autoconf_config.hpp(101): error C2146: 语法错误: 缺少“;”(在标识符“XMLSSize_t”的前面)
+     1>D:\Qt\Project\Configuration V1.2\xercesc/util/Xerces_autoconf_config.hpp(101): error C4430: 缺少类型说明符 - 假定为 int。注意:  C++ 不支持默认 int
+         SAX2PrintHandlers.cpp
+     1>D:\Qt\Project\Configuration V1.2\xercesc/util/Xerces_autoconf_config.hpp(101): error C2146: 语法错误: 缺少“;”(在标识符“XMLSSize_t”的前面)
+     1>D:\Qt\Project\Configuration V1.2\xercesc/util/Xerces_autoconf_config.hpp(101): error C4430: 缺少类型说明符 - 假定为 int。注意:  C++ 不支持默认 int
+         scdtree.cpp
+     1>scdtree.cpp(929): warning C4100: “index”: 未引用的形参
+     1>scdtree.cpp(2322): warning C4100: “EnumMap”: 未引用的形参
+     1>scdtree.cpp(2410): warning C4100: “LNMap”: 未引用的形参
+     1>scdtree.cpp(2476): warning C4100: “LNMap”: 未引用的形参
+     1>scdtree.cpp(2482): warning C4189: “m_Node_IN”: 局部变量已初始化但不引用
+     1>scdtree.cpp(2584): warning C4100: “LNMap”: 未引用的形参
+     1>scdtree.cpp(3824): warning C4100: “state”: 未引用的形参
+     1>scdtree.cpp(5409): warning C4100: “RefList”: 未引用的形参
+     1>scdtree.cpp(5409): warning C4100: “warnList”: 未引用的形参
+     1>scdtree.cpp(5409): warning C4100: “errList”: 未引用的形参
+     1>scdtree.cpp(6232): warning C4100: “state”: 未引用的形参
+     1>scdtree.cpp(6743): warning C4189: “m_Text”: 局部变量已初始化但不引用
+     1>scdtree.cpp(6741): warning C4189: “m_DAI”: 局部变量已初始化但不引用
+     1>scdtree.cpp(8333): warning C4100: “state”: 未引用的形参
+     1>scdtree.cpp(9669): warning C4100: “state”: 未引用的形参
+     1>scdtree.cpp(9812): warning C4100: “state”: 未引用的形参
+     1>scdtree.cpp(11038): warning C4100: “state”: 未引用的形参
+     1>scdtree.cpp(11204): warning C4100: “stat”: 未引用的形参
+     1>scdtree.cpp(12066): warning C4189: “flag”: 局部变量已初始化但不引用
+     1>scdtree.cpp(14374): warning C4189: “m_DAI”: 局部变量已初始化但不引用
+     1>scdtree.cpp(14537): warning C4189: “m_DAI”: 局部变量已初始化但不引用
+     1>scdtree.cpp(14955): warning C4189: “m_DataSet”: 局部变量已初始化但不引用
+     1>scdtree.cpp(15143): warning C4189: “chName”: 局部变量已初始化但不引用
+     1>scdtree.cpp(15142): warning C4189: “ch”: 局部变量已初始化但不引用
+     1>scdtree.cpp(15141): warning C4189: “chr”: 局部变量已初始化但不引用
+     1>scdtree.cpp(15674): warning C4100: “SmvList”: 未引用的形参
+         正在生成代码...
+     1>d:\qt\project\configuration v1.2\scdtree.cpp(7511): warning C4715: “ScdTree::Compare”: 不是所有的控件路径都返回值
+     1>已完成生成项目“D:\Qt\Project\Configuration V1.2\Configuration.vcxproj”(Build 个目标)的操作 - 失败。
+
+生成失败。
+
+已用时间 00:00:16.66

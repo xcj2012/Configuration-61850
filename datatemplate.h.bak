@@ -1,0 +1,31 @@
+#ifndef DATATEMPLATE_H
+#define DATATEMPLATE_H
+
+#include <QDialog>
+#include <QStandardItemModel>
+namespace Ui {
+class DataTempLate;
+}
+
+class DataTempLate : public QDialog
+{
+    Q_OBJECT
+
+public:
+    explicit DataTempLate(QWidget *parent = 0);
+    ~DataTempLate();
+    void init_dlg();
+    void SetInit(int);
+public:
+
+     QStringList Interactive;
+	 QString strName;
+     int state;
+private slots:
+    void Pushbutton_Apply();
+    void Pushbutton_Cancel();
+private:
+    Ui::DataTempLate *ui;
+};
+
+#endif // DATATEMPLATE_H

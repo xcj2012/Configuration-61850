@@ -1,0 +1,39 @@
+﻿#ifndef BATCHIMPORTCID_H
+#define BATCHIMPORTCID_H
+
+#include <QDialog>
+#include"userdefinedelegate.h"
+#include"scdtree.h"
+#include<QMap>
+#include<QInputDialog>
+namespace Ui {
+class BatchImportCID;
+}
+
+class BatchImportCID : public QDialog
+{
+    Q_OBJECT
+
+public:
+    explicit BatchImportCID(QWidget *parent = 0);
+    ~BatchImportCID();
+    QStringList fileList;
+    void Init_dlg();
+	void SetPoint(ScdTree*);
+    void Display();
+
+public:
+    BatchImportModel *Model;
+    QMap<QString,QString> File_Map;
+private:
+    ScdTree *Point;
+private slots:
+    void Pushbutton_all();
+    void Pushbutton_noall();
+    void Pushbutton_import();
+	void OnDatadoubleClicked(const QModelIndex &);
+private:
+    Ui::BatchImportCID *ui;
+};
+
+#endif // BATCHIMPORTCID_H
