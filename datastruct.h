@@ -1255,6 +1255,19 @@ struct Address_SMV
 		  Dese.clear();
 	  }
   };
+  struct Item_Node
+  {
+
+      QString value;
+      QString name;
+      int index;
+      Item_Node(){
+
+          index=-1;
+          name.clear();
+          value.clear();
+      }
+  };
   extern QTranslator *g_appTranslator;
 #endif // DATASTRUCT
 

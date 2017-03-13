@@ -6,7 +6,30 @@ QMainWindow(parent),
 ui(new Ui::MainWindow)
 {
 	ui->setupUi(this);
+    m_ModelHeader = new QStandardItemModel;
+    m_ModelSubstation = new QStandardItemModel;
+    m_ModelCommunication = new QStandardItemModel;
+    m_ModelIED = new QStandardItemModel;
+    m_ModelIEDNode = new QStandardItemModel;
+    m_ModelSubNet = new QStandardItemModel;
+    m_ModelIED_LD = new QStandardItemModel;
+    m_ModelIED_LN = new QStandardItemModel;
+    m_ModelIED_DataSetData = new QStandardItemModel;
+    m_ModelIED_GSE = new QStandardItemModel;
+    m_ModelIED_Input = new QStandardItemModel;
+    m_ModelIED_SMV = new QStandardItemModel;
+    m_ModelIED_Log = new QStandardItemModel;
+    m_ModelIED_Report = new QStandardItemModel;
+    m_ModelIED_DataSet = new QStandardItemModel;
+    m_ModelIED_MmsNet = new QStandardItemModel;
+    m_ModelIED_GooseNet = new QStandardItemModel;
+    m_ModelIED_SmvNet = new QStandardItemModel;
+    m_ModelTree =new QStandardItemModel;
+    ui->Tree->clear();
 	Init();
+
+
+
 	m_SCDPoint = NULL;
 	RPT_STATE = 0;
 	Change_Flag = 0;
@@ -14,6 +37,7 @@ ui(new Ui::MainWindow)
 	Reversion_Flag = 0;
 	DataSet_Change = false;
 	Language_Type = -1;
+    connect(ui->tabWidget,SIGNAL(currentChanged(int)),this,SLOT(Action_currentChanged(int)));
 }
 
 MainWindow::~MainWindow()
@@ -31,34 +55,10 @@ void MainWindow::Init()
 	Init_Display();
 	
 	DisableFun();
-	m_ModelHeader = new QStandardItemModel;
-	m_ModelSubstation = new QStandardItemModel;
-	m_ModelCommunication = new QStandardItemModel;
-	m_ModelIED = new QStandardItemModel;
-	m_ModelIEDNode = new QStandardItemModel;
-	m_ModelSubNet = new QStandardItemModel;
-	m_ModelIED_LD = new QStandardItemModel;
-	m_ModelIED_LN = new QStandardItemModel;
-	m_ModelIED_DataSetData = new QStandardItemModel;
-	m_ModelIED_GSE = new QStandardItemModel;
-	m_ModelIED_Input = new QStandardItemModel;
-	m_ModelIED_SMV = new QStandardItemModel;
-	m_ModelIED_Log = new QStandardItemModel;
-	m_ModelIED_Report = new QStandardItemModel;
-	m_ModelIED_DataSet = new QStandardItemModel;
-	m_ModelIED_MmsNet = new QStandardItemModel;
-	m_ModelIED_GooseNet = new QStandardItemModel;
-	m_ModelIED_SmvNet = new QStandardItemModel;
+
 	GOOSE_Flag = 0;
 	Version_Flag = 0;
 	Reversion_Flag = 0;
-	
-	// ui->SCLTree->setHeaderLabel("SCL");
-	//    QTreeWidgetItem * header = ui->SCLTree->headerItem();
-	//    header->setText(0, QString("SCL Tree"));
-	//    header->setBackgroundColor(0,QColor(0,0,0));
-	//    header->setBackground(0,QBrush(QColor(0,0,0)));
-	//    ui->SCLTree->header()->setStyleSheet("QHeaderView::section{rgb(246, 254, 255);}");
 	ui->actionInit_Set_Communication->setEnabled(false);
 	connect(ui->actionNew, SIGNAL(triggered()), this, SLOT(Action_New()));
 	connect(ui->actionSave_as, SIGNAL(triggered()), this, SLOT(Action_Save_As()));
@@ -67,7 +67,6 @@ void MainWindow::Init()
 
 	connect(ui->actionOpen, SIGNAL(triggered()), this, SLOT(Action_Load()));
 	connect(ui->SCLTree, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(SCLTree_MousEvent(QPoint)));
-	//connect(ui->SCLTree,SIGNAL(doubleClicked(QModelIndex)),this,SLOT(Header_DoublClick(QModelIndex)));
 	connect(ui->SCLTree, SIGNAL(itemDoubleClicked(QTreeWidgetItem *, int)),
 		this, SLOT(openMenuProgram(QTreeWidgetItem*, int)));
 	connect(ui->SCLTree, SIGNAL(itemClicked(QTreeWidgetItem *, int)),
@@ -122,10 +121,9 @@ void MainWindow::Init()
 	connect(ui->actionSwtich_Chinese, SIGNAL(triggered()), this, SLOT(Action_SwitchLanguage()));
 	connect(ui->actionExit, SIGNAL(triggered()), this, SLOT(Action_Close()));
 	connect(ui->actionCID, SIGNAL(triggered()), this, SLOT(Action_CID_Contain()));
-
+    connect(ui->Tree,SIGNAL(itemClicked(QTreeWidgetItem*,int)),this,SLOT(Tree_itemClicked(QTreeWidgetItem*,int)));
 	ui->actionSwitch_English->setProperty("Language", 2);
 	ui->actionSwtich_Chinese->setProperty("Language", 1);
-	//connect(ui->actionDel_All_Virtual_terminal_Map,SIGNAL(triggered()),this,SLOT(Action_Del_ALLInput()));
 }
 void MainWindow::Init_Display()
 {
@@ -141,6 +139,8 @@ void MainWindow::Init_Display()
 	ui->checkBox_DA_END->hide();
 	ui->checkBox_Disp->setText(tr("Not display Common"));
 	ui->SCLTree->setHeaderLabel(tr("SCL Tree"));
+    ui->Tree->setHeaderLabel(tr("SCL Tree"));
+    ui->Tree->header()->hide();
 	ui->Button_DataSet->hide();
 	ui->Button_DataSet->setText(tr("DataSet"));
 	ui->Button_GSE->hide();
@@ -237,6 +237,10 @@ void MainWindow::Init_Display()
 	ui->splitter_2->setStretchFactor(0, 20);
 	ui->splitter_2->setStretchFactor(1, 60);
 	ui->splitter_2->setStretchFactor(2, 20);
+    ui->splitter_3->setStretchFactor(0, 80);
+    ui->splitter_3->setStretchFactor(1, 20);
+    ui->tab_SCL->setWindowTitle(tr("SCL"));
+    ui->tab_Tree->setWindowTitle(tr("IED tree"));
 	setAutoFillBackground(true);
 }
 void MainWindow::DisableFun()
@@ -443,6 +447,7 @@ void MainWindow::InitSCDtree()
 	QTreeWidgetItem *firstClassItem;
 	//QTreeWidgetItem *secClassItem;
 	ui->SCLTree->clear();
+    ui->Tree->clear();
 	T_parent = ui->SCLTree->invisibleRootItem();
 	T_parent->takeChildren();
 	firstClassItem = new QTreeWidgetItem(T_parent);

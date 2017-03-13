@@ -234,7 +234,7 @@ int MainWindow::Schema_Check()
 		str += QString::number(count, 10);
 		ui->textBrowser->clear();
 		ui->textBrowser->append(str);
-		if ((handler.errorList.size()>99) || (handler.warningList.size()>99))	
+        if ((handler.errorList.size()>299) || (handler.warningList.size()>299))
 		{
 			ui->textBrowser->append("To many error! check the file");
 		}

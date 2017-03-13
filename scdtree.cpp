@@ -16050,3 +16050,94 @@ void ScdTree::GetLDList(QString IED, QVector<AP_LD>&Vector)
 		}
 	}
 }
+void ScdTree::AddRoot_Node(QTreeWidget* widget)
+{
+    if(root==NULL)
+        return;
+
+    QTreeWidgetItem *item =new QTreeWidgetItem();
+    widget->addTopLevelItem(item);
+    item->setText(0,QString(root->Value()));
+
+    AddChild_Node(item,root);
+}
+void ScdTree::AddChild_Node(QTreeWidgetItem* item,TiXmlElement* Node)
+{
+    TiXmlElement* child =Node->FirstChildElement();
+    while(child!=NULL)
+    {
+        QTreeWidgetItem *sub_item =new  QTreeWidgetItem(item);
+        sub_item->setText(0,QString(child->Value()));
+        if(child->Attribute("name"))
+            sub_item->setText(1,QString(child->Attribute("name")));
+        if(child->FirstChildElement()!=NULL)
+            AddChild_Node(sub_item,child);
+        child =child->NextSiblingElement();
+    }
+}
+ void ScdTree::Get_Attribute_List(QTreeWidgetItem*  item ,QList<Item_Node>&List)
+ {
+        Item_Node m_node;
+        m_node.value =item->text(0);
+        m_node.name =item->text(1);
+        if(m_node.name.isEmpty())
+        {
+            if(item->parent()!=NULL)
+                m_node.index = item->parent()->indexOfChild(item);
+        }
+
+        List.append(m_node);
+        QTreeWidgetItem* p_item;
+        p_item= item->parent();
+        while (p_item!=NULL)
+        {
+            m_node.value =p_item->text(0);
+            m_node.name =p_item->text(1);
+            if(m_node.name.isEmpty())
+            {
+                if(p_item->parent()!=NULL)
+                    m_node.index = p_item->parent()->indexOfChild(p_item);
+            }
+            List.append(m_node);
+            p_item=p_item->parent();
+        }
+        return;
+ }
+void ScdTree::Display_AttributeByNode(QList<Item_Node> List,QStandardItemModel* mode)
+{
+    mode->setRowCount(0);
+    TiXmlElement *Element;
+    Element= root;
+    for(int i=List.size()-2;i>=0;i--)
+    {
+        int index =-1;
+        Element=Element->FirstChildElement(List.at(i).value.toLocal8Bit().data());
+        while (Element!=NULL) {
+
+            if(!List.at(i).name.isEmpty())
+            {
+                if(Element->Attribute("name")==NULL)
+                    continue;
+                if(QString(Element->Attribute("name"))==List.at(i).name)
+                    break;
+                Element=Element->NextSiblingElement();
+            }else
+            {
+                if(List.at(i).index==index)
+                    break;
+                Element=Element->NextSiblingElement();
+                index++;
+            }
+        }
+    }
+    TiXmlAttribute* Attribute;
+    Attribute =Element->FirstAttribute();
+    while(Attribute!=NULL)
+    {
+        mode->setRowCount(mode->rowCount()+1);
+        mode->setData(mode->index(mode->rowCount()-1,0),QString(Attribute->Name()));
+        mode->item(mode->rowCount()-1, 0)->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+        mode->setData(mode->index(mode->rowCount()-1,1),QString(Attribute->Value()));
+        Attribute=Attribute->Next();
+    }
+}

@@ -79,6 +79,7 @@ public:
     QVector<HistoryItem> HistoryItemList;
     QVector<CommItem> CommItemList;
     QStandardItemModel *m_ModelHeader;
+    QStandardItemModel *m_ModelTree;
     QStandardItemModel *m_ModelSubstation;
     QStandardItemModel *m_ModelCommunication;
     QStandardItemModel *m_ModelSubNet;
@@ -115,7 +116,7 @@ public:
 	QVector<FCDA_Struct> DataInstList_LD;
 	QVector<FCDA_Struct> DataInstList_Select;
 	QMap<QString, ConnectedAP>ConnectAP_MAP;
-
+    QStandardItemModel *model_Tree;
     QString currentDataset;
     QString currentLD;
     bool GSE_Enable_flag;
@@ -139,6 +140,7 @@ public:
     void DisplayNode(ScdTree*);
     void InitSCDtree();
     void Init();
+    void Init_Tree();
 	void Init_Menu();
     void Init_Frame();
     void SCLTree_IED_RightClick(const QPoint &pos);
@@ -343,6 +345,8 @@ private slots:
     void Action_SwitchLanguage();
     void Action_Close();
     void Action_CID_Contain();
+    void Action_currentChanged(int);
+    void Tree_itemClicked(QTreeWidgetItem *item, int column);
     //void Action_Del_ALLInput();
 private:
     void AddNewHistoryItem();

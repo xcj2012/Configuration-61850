@@ -12,6 +12,7 @@
 #include <QAxObject>
 #include <QFile>
 #include<QList>
+#include<QTreeWidget>
 #include"datatemplate.h"
 #include"compareied.h"
 #include<QObject>
@@ -24,11 +25,13 @@
 #include "include_cpp/libxl.h"
 #include"importxls_rs.h"
 #include<QProgressBar>
+#include<QTreeWidgetItem>
 using namespace libxl;
 WORD extern Crc16(BYTE* pBuf, int nLen);
 QString extern IP_Increase(QString IP, int i);
 QString extern MAC_Increase(QString MAC, int i);
 int Min_Flag(QList<int>&);
+
 class ScdTree
 {
 
@@ -324,6 +327,10 @@ public:
 	void Init_P_Map(TiXmlElement*, QMap<QString, TiXmlElement* >&, int state);
 	void Fill_Node_GOOSEPUB(TiXmlElement*Node, QString cbName);
 	void GetLDList(QString IED,QVector<AP_LD>&);
+    void AddRoot_Node(QTreeWidget*);
+    void AddChild_Node(QTreeWidgetItem* item,TiXmlElement* node);
+    void Get_Attribute_List(QTreeWidgetItem* item,QList<Item_Node>&);
+    void Display_AttributeByNode(QList<Item_Node>,QStandardItemModel* mode);
 private:
     TiXmlElement* root;
     TiXmlDocument* doc;
